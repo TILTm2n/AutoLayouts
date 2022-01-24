@@ -24,10 +24,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        locationItem = UITabBarItem(title: "My Location", image: UIImage(named: "location"), selectedImage: UIImage(named: "locationSelected"))
-        searchItem = UITabBarItem(title: "Search", image: UIImage(named: "search"), selectedImage: UIImage(named: "searchSelected"))
-        forecastItem = UITabBarItem(title: "Forecast", image: UIImage(named: "forecast"), selectedImage: UIImage(named: "forecastSelected"))
-        settingsItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 3)
+        locationItem = UITabBarItem(title: "My Location", image: UIImage(named: "location3x"), selectedImage: UIImage(named: "locationSelected"))
+        searchItem = UITabBarItem(title: "Search", image: UIImage(named: "search3x"), selectedImage: UIImage(named: "searchSelected"))
+        forecastItem = UITabBarItem(title: "Forecast", image: UIImage(named: "forecast3x"), selectedImage: UIImage(named: "forecastSelected"))
+        settingsItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings3x"), tag: 3)
         
         locationVC.tabBarItem = locationItem
         searchVC.tabBarItem = searchItem
@@ -43,6 +43,7 @@ class ViewController: UIViewController {
                                     searchVC,
                                     forecastVC,
                                     settingsVC], animated: true)
+        tabBarC.tabBar.backgroundColor = UIColor(named: "tabBarColorLight")
         present(tabBarC, animated: true, completion: nil)
     }
 }

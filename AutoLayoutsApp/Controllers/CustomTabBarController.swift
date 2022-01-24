@@ -13,8 +13,10 @@ class CustomTabBarController: UITabBarController {
         super.viewDidLoad()
         
         self.modalPresentationStyle = .fullScreen
-        self.tabBar.backgroundColor = UIColor(named: "tabBarColorLight")
-        self.tabBar.layer.cornerRadius = 10
+        self.tabBar.barTintColor = UIColor(named: "tabBarColorLight")
+        self.tabBar.tintColor = .white
+        self.tabBar.unselectedItemTintColor = .black
+        self.tabBar.layer.cornerRadius = 20
         
     }
 
