@@ -25,9 +25,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(firstView)
-        
-        createFirstViewConstraint()
+        //view.addSubview(firstView)
+        //createFirstViewConstraint()
         
         
         

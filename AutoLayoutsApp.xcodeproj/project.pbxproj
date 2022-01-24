@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A37E09AE279DF315002FEAB9 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E09AD279DF315002FEAB9 /* CustomTabBarController.swift */; };
 		A3837945279C89D900080A72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3837944279C89D900080A72 /* AppDelegate.swift */; };
 		A3837947279C89D900080A72 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3837946279C89D900080A72 /* SceneDelegate.swift */; };
 		A3837949279C89D900080A72 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3837948279C89D900080A72 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A37E09AD279DF315002FEAB9 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		A3837941279C89D900080A72 /* AutoLayoutsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoLayoutsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3837944279C89D900080A72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3837946279C89D900080A72 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A37E09AC279DF2C2002FEAB9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A3837948279C89D900080A72 /* ViewController.swift */,
+				A37E09AD279DF315002FEAB9 /* CustomTabBarController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		A3837938279C89D900080A72 = {
 			isa = PBXGroup;
 			children = (
@@ -58,9 +69,9 @@
 		A3837943279C89D900080A72 /* AutoLayoutsApp */ = {
 			isa = PBXGroup;
 			children = (
+				A37E09AC279DF2C2002FEAB9 /* Controllers */,
 				A3837944279C89D900080A72 /* AppDelegate.swift */,
 				A3837946279C89D900080A72 /* SceneDelegate.swift */,
-				A3837948279C89D900080A72 /* ViewController.swift */,
 				A383794A279C89D900080A72 /* Main.storyboard */,
 				A3837950279C89DA00080A72 /* Assets.xcassets */,
 				A3837952279C89DA00080A72 /* LaunchScreen.storyboard */,
@@ -143,6 +154,7 @@
 			files = (
 				A3837949279C89D900080A72 /* ViewController.swift in Sources */,
 				A3837945279C89D900080A72 /* AppDelegate.swift in Sources */,
+				A37E09AE279DF315002FEAB9 /* CustomTabBarController.swift in Sources */,
 				A383794F279C89D900080A72 /* AutoLayoutsApp.xcdatamodeld in Sources */,
 				A3837947279C89D900080A72 /* SceneDelegate.swift in Sources */,
 			);
