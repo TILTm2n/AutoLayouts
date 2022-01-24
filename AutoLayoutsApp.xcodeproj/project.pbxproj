@@ -15,6 +15,10 @@
 		A383794F279C89D900080A72 /* AutoLayoutsApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A383794D279C89D900080A72 /* AutoLayoutsApp.xcdatamodeld */; };
 		A3837951279C89DA00080A72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3837950279C89DA00080A72 /* Assets.xcassets */; };
 		A3837954279C89DA00080A72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3837952279C89DA00080A72 /* LaunchScreen.storyboard */; };
+		A3A80154279F1EA100EA2E1E /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A80153279F1EA100EA2E1E /* LocationViewController.swift */; };
+		A3A80156279F1EEF00EA2E1E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A80155279F1EEF00EA2E1E /* SearchViewController.swift */; };
+		A3A80158279F1F3000EA2E1E /* ForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A80157279F1F3000EA2E1E /* ForecastViewController.swift */; };
+		A3A8015A279F1F3F00EA2E1E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A80159279F1F3F00EA2E1E /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		A3837950279C89DA00080A72 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3837953279C89DA00080A72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A3837955279C89DA00080A72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A3A80153279F1EA100EA2E1E /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		A3A80155279F1EEF00EA2E1E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		A3A80157279F1F3000EA2E1E /* ForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
+		A3A80159279F1F3F00EA2E1E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +54,10 @@
 			children = (
 				A3837948279C89D900080A72 /* ViewController.swift */,
 				A37E09AD279DF315002FEAB9 /* CustomTabBarController.swift */,
+				A3A80153279F1EA100EA2E1E /* LocationViewController.swift */,
+				A3A80155279F1EEF00EA2E1E /* SearchViewController.swift */,
+				A3A80157279F1F3000EA2E1E /* ForecastViewController.swift */,
+				A3A80159279F1F3F00EA2E1E /* SettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -153,10 +165,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3837949279C89D900080A72 /* ViewController.swift in Sources */,
+				A3A80156279F1EEF00EA2E1E /* SearchViewController.swift in Sources */,
 				A3837945279C89D900080A72 /* AppDelegate.swift in Sources */,
 				A37E09AE279DF315002FEAB9 /* CustomTabBarController.swift in Sources */,
+				A3A80154279F1EA100EA2E1E /* LocationViewController.swift in Sources */,
+				A3A80158279F1F3000EA2E1E /* ForecastViewController.swift in Sources */,
 				A383794F279C89D900080A72 /* AutoLayoutsApp.xcdatamodeld in Sources */,
 				A3837947279C89D900080A72 /* SceneDelegate.swift in Sources */,
+				A3A8015A279F1F3F00EA2E1E /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

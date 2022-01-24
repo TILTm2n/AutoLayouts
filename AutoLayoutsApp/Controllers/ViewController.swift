@@ -8,37 +8,42 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    let firstView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .red
-        return view
-    }()
     
-    let secondView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .green
-        return view
-    }()
+    let locationVC = LocationViewController()
+    let searchVC = SearchViewController()
+    let forecastVC = ForecastViewController()
+    let settingsVC = SettingsViewController()
+    
+    var locationItem = UITabBarItem()
+    var searchItem = UITabBarItem()
+    var forecastItem = UITabBarItem()
+    var settingsItem = UITabBarItem()
+    
+    let tabBarC = CustomTabBarController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //view.addSubview(firstView)
-        //createFirstViewConstraint()
         
+        locationItem = UITabBarItem(title: "My Location", image: UIImage(named: "location"), selectedImage: UIImage(named: "locationSelected"))
+        searchItem = UITabBarItem(title: "Search", image: UIImage(named: "search"), selectedImage: UIImage(named: "searchSelected"))
+        forecastItem = UITabBarItem(title: "Forecast", image: UIImage(named: "forecast"), selectedImage: UIImage(named: "forecastSelected"))
+        settingsItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 3)
         
+        locationVC.tabBarItem = locationItem
+        searchVC.tabBarItem = searchItem
+        forecastVC.tabBarItem = forecastItem
+        settingsVC.tabBarItem = settingsItem
         
     }
     
-    fileprivate func createFirstViewConstraint() {
-        firstView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1/3).isActive = true
-        firstView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/3).isActive = true
-        firstView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20.0).isActive = true
-        firstView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5.0).isActive = true
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        tabBarC.setViewControllers([locationVC,
+                                    searchVC,
+                                    forecastVC,
+                                    settingsVC], animated: true)
+        present(tabBarC, animated: true, completion: nil)
     }
-
-
 }
 

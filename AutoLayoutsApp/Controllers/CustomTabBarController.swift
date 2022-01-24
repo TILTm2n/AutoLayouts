@@ -12,9 +12,9 @@ class CustomTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tabBarC = UITabBarController()
-        tabBarC.modalPresentationStyle = .fullScreen
-        tabBarC.tabBar.backgroundColor = UIColor(named: "tabBarColor")
+        self.modalPresentationStyle = .fullScreen
+        self.tabBar.backgroundColor = UIColor(named: "tabBarColorLight")
+        self.tabBar.layer.cornerRadius = 10
         
     }
 
