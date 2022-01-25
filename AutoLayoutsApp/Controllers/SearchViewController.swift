@@ -10,6 +10,7 @@ import UIKit
 class SearchViewController: UIViewController {
 
     let titleStack = UIStackView()
+    let searchStack = UIStackView()
     let header = UILabel()
     let detail = UILabel()
     
@@ -20,20 +21,48 @@ class SearchViewController: UIViewController {
         
         setStackView()
         setStackViewConstraits()
+        
         titleStack.addArrangedSubview(header)
+        titleStack.addArrangedSubview(detail)
+        
+        setHeader()
+        setDetail()
+        
     }
+    
+    
     
     func setHeader(){
         header.text = "Pick a location"
-        header.font = UIFont(name: "RobotoSlab", size: 30.0)
+        header.layer.shadowOffset = CGSize(width: 5, height: 5)
+        header.layer.shadowOpacity = 0.5
+        header.shadowColor = .black
+        header.font = UIFont.boldSystemFont(ofSize: 30.0)
         header.textAlignment = .center
         header.textColor = .white
+        header.translatesAutoresizingMaskIntoConstraints = false
+        header.widthAnchor.constraint(equalTo: self.titleStack.widthAnchor).isActive = true
+    }
+    
+    func setDetail(){
+        detail.text = "Type the area or city you want to know the detailed weather information at this time."
+        detail.layer.shadowOffset = CGSize(width: 5, height: 5)
+        detail.layer.shadowOpacity = 0.5
+        detail.font = UIFont.systemFont(ofSize: 15.0, weight: .light)
+        detail.textAlignment = .center
+        detail.textColor = .white
+        detail.translatesAutoresizingMaskIntoConstraints = false
+        detail.widthAnchor.constraint(equalTo: self.titleStack.widthAnchor).isActive = true
+        detail.lineBreakMode = .byWordWrapping
+        detail.numberOfLines = 3
+        detail.baselineAdjustment = .alignCenters
+        
     }
     
     func setStackView(){
         titleStack.axis = .vertical
         titleStack.spacing = 3.0
-        titleStack.backgroundColor = .red
+        titleStack.alignment = .center
     }
     
     func setStackViewConstraits(){
