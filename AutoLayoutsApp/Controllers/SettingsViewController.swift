@@ -9,21 +9,21 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+    let themeSwitch = UISwitch()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.view.backgroundColor = UIColor(named: "mainBGLight")
+        
+        self.view.addSubview(themeSwitch)
+        
+        themeSwitch.translatesAutoresizingMaskIntoConstraints = false
+        
+        themeSwitch.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 100).isActive = true
+        themeSwitch.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        themeSwitch.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        themeSwitch.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
