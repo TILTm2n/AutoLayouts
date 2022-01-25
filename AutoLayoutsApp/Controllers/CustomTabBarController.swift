@@ -16,7 +16,7 @@ class CustomTabBarController: UITabBarController {
         self.tabBar.barTintColor = UIColor(named: "tabBarColorLight")
         self.tabBar.tintColor = .white
         self.tabBar.unselectedItemTintColor = .black
-        self.tabBar.layer.cornerRadius = 20
+        self.tabBar.layer.cornerRadius = 25
         
     }
 

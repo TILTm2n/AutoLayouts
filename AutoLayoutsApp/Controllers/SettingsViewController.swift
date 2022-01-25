@@ -13,17 +13,22 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(named: "mainBGLight")
+        self.view.backgroundColor = .white
         
         self.view.addSubview(themeSwitch)
         
-        themeSwitch.translatesAutoresizingMaskIntoConstraints = false
+        createSwitch()
         
-        themeSwitch.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 100).isActive = true
+        
+        
+    }
+    
+    func createSwitch(){
+        themeSwitch.translatesAutoresizingMaskIntoConstraints = false
+        themeSwitch.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
         themeSwitch.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         themeSwitch.widthAnchor.constraint(equalToConstant: 200).isActive = true
         themeSwitch.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        
     }
 
 }
