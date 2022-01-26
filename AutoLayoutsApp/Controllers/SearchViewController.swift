@@ -17,7 +17,7 @@ class SearchViewController: UIViewController {
     let searchTextField = UISearchTextField()
     let searchBarContainer = UIView()
     let locationButton = UIButton()
-    let collectionPlacesView = UICollectionView()
+    var collectionView: UICollectionView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +27,6 @@ class SearchViewController: UIViewController {
         self.searchPanel.addSubview(searchBarContainer)
         self.searchPanel.addSubview(locationButton)
         self.searchBarContainer.addSubview(searchTextField)
-        collectionPlacesView.delegate = self
-        collectionPlacesView.dataSource = self
         
         setStackView()
         setStackViewConstraits()
@@ -50,6 +48,9 @@ class SearchViewController: UIViewController {
         
         setSearchBarTextField()
         setSearchBarTextFieldConstraints()
+        
+        setCollectionView()
+        setCollectionViewConstraints()
         
     }
     
@@ -103,8 +104,8 @@ class SearchViewController: UIViewController {
     func setSearchConstraints(){
         searchPanel.translatesAutoresizingMaskIntoConstraints = false
         searchPanel.topAnchor.constraint(equalTo: self.titleStack.bottomAnchor, constant: 21).isActive = true
-        searchPanel.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 55).isActive = true
-        searchPanel.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: -55).isActive = true
+        searchPanel.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 45).isActive = true
+        searchPanel.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: -45).isActive = true
         searchPanel.heightAnchor.constraint(equalToConstant: 63.0).isActive = true
     }
     
@@ -149,7 +150,26 @@ class SearchViewController: UIViewController {
     }
     
     func setCollectionView(){
-        
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        //layout.itemSize = CGSize(width: 153.0, height: 200.0)
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        guard let collectionView = collectionView else {return}
+        self.view.addSubview(collectionView)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        //Регистрирует класс для использования при создании новых ячеек представления коллекции.
+        collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: MyCollectionViewCell.identifier)
+        collectionView.frame = view.bounds
+        collectionView.backgroundColor = UIColor(named: "mainBGLight")
+    }
+    
+    func setCollectionViewConstraints(){
+        collectionView?.translatesAutoresizingMaskIntoConstraints = false
+        collectionView?.topAnchor.constraint(equalTo: self.searchPanel.bottomAnchor, constant: 31.0).isActive = true
+        collectionView?.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 45.0).isActive = true
+        collectionView?.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: -45.0).isActive = true
+        collectionView?.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -18.0).isActive = true
     }
     
 }
@@ -172,8 +192,7 @@ extension SearchViewController: UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CityCell", for: indexPath)
-        cell.backgroundColor = .red
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCollectionViewCell.identifier, for: indexPath)
         return cell
     }
     
