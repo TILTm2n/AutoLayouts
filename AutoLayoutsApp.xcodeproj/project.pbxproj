@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A302BCFE27A1CF7400A5D7F6 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302BCFD27A1CF7400A5D7F6 /* MyCollectionViewCell.swift */; };
 		A37E09AE279DF315002FEAB9 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E09AD279DF315002FEAB9 /* CustomTabBarController.swift */; };
 		A3837945279C89D900080A72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3837944279C89D900080A72 /* AppDelegate.swift */; };
 		A3837947279C89D900080A72 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3837946279C89D900080A72 /* SceneDelegate.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A302BCFD27A1CF7400A5D7F6 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		A37E09AD279DF315002FEAB9 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		A3837941279C89D900080A72 /* AutoLayoutsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoLayoutsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3837944279C89D900080A72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 				A3A80155279F1EEF00EA2E1E /* SearchViewController.swift */,
 				A3A80157279F1F3000EA2E1E /* ForecastViewController.swift */,
 				A3A80159279F1F3F00EA2E1E /* SettingsViewController.swift */,
+				A302BCFD27A1CF7400A5D7F6 /* MyCollectionViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				A37E09AE279DF315002FEAB9 /* CustomTabBarController.swift in Sources */,
 				A3A80154279F1EA100EA2E1E /* LocationViewController.swift in Sources */,
 				A3A80158279F1F3000EA2E1E /* ForecastViewController.swift in Sources */,
+				A302BCFE27A1CF7400A5D7F6 /* MyCollectionViewCell.swift in Sources */,
 				A383794F279C89D900080A72 /* AutoLayoutsApp.xcdatamodeld in Sources */,
 				A3837947279C89D900080A72 /* SceneDelegate.swift in Sources */,
 				A3A8015A279F1F3F00EA2E1E /* SettingsViewController.swift in Sources */,

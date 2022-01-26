@@ -17,6 +17,7 @@ class SearchViewController: UIViewController {
     let searchTextField = UISearchTextField()
     let searchBarContainer = UIView()
     let locationButton = UIButton()
+    let collectionPlacesView = UICollectionView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,8 @@ class SearchViewController: UIViewController {
         self.searchPanel.addSubview(searchBarContainer)
         self.searchPanel.addSubview(locationButton)
         self.searchBarContainer.addSubview(searchTextField)
+        collectionPlacesView.delegate = self
+        collectionPlacesView.dataSource = self
         
         setStackView()
         setStackViewConstraits()
@@ -144,5 +147,39 @@ class SearchViewController: UIViewController {
         searchTextField.topAnchor.constraint(equalTo: searchBarContainer.topAnchor).isActive = true
         searchTextField.bottomAnchor.constraint(equalTo: searchBarContainer.bottomAnchor).isActive = true
     }
+    
+    func setCollectionView(){
+        
+    }
+    
+}
+
+extension SearchViewController: UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        print("you tapped me")
+    }
+}
+
+extension SearchViewController: UICollectionViewDataSource{
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CityCell", for: indexPath)
+        cell.backgroundColor = .red
+        return cell
+    }
+    
+    
+}
+
+extension SearchViewController: UICollectionViewDelegateFlowLayout{
     
 }
