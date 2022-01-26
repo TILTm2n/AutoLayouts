@@ -50,6 +50,7 @@ class SearchViewController: UIViewController {
         
     }
     
+    // MARK: - Header and description
     func setStackView(){
         titleStack.axis = .vertical
         titleStack.spacing = 3.0
@@ -91,6 +92,7 @@ class SearchViewController: UIViewController {
         
     }
     
+    // MARK: - searchPanel
     func setSearch(){
         searchPanel.layer.cornerRadius = 20
     }
@@ -106,6 +108,7 @@ class SearchViewController: UIViewController {
     func setLocationButton(){
         locationButton.backgroundColor = UIColor(named: "tabBarColorLight")
         locationButton.layer.cornerRadius = 20
+        locationButton.setImage(UIImage(named: "locationButton"), for: .normal)
     }
     
     func setLocationButtonConstraints(){
@@ -131,7 +134,7 @@ class SearchViewController: UIViewController {
     }
     
     func setSearchBarTextField(){
-        
+        searchTextField.placeholder = "Search"
     }
 
     func setSearchBarTextFieldConstraints(){
