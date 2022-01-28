@@ -152,7 +152,7 @@ class SearchViewController: UIViewController {
     func setCollectionView(){
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        //layout.itemSize = CGSize(width: 153.0, height: 200.0)
+        layout.itemSize = CGSize(width: 145.0, height: 200.0)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         guard let collectionView = collectionView else {return}
         self.view.addSubview(collectionView)
@@ -160,7 +160,7 @@ class SearchViewController: UIViewController {
         collectionView.dataSource = self
         //Регистрирует класс для использования при создании новых ячеек представления коллекции.
         collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: MyCollectionViewCell.identifier)
-        collectionView.frame = view.bounds
+        //collectionView.frame = view.bounds
         collectionView.backgroundColor = UIColor(named: "mainBGLight")
     }
     
@@ -188,7 +188,7 @@ extension SearchViewController: UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 53
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
