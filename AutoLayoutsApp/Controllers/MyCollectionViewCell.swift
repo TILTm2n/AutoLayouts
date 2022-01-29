@@ -27,10 +27,10 @@ class MyCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .red
+        contentView.backgroundColor = .green
         contentView.layer.cornerRadius = 10
         //contentView.addSubview(myLabel)
-        contentView.addSubview(myImageView)
+        //contentView.addSubview(myImageView)
     }
     
     required init?(coder: NSCoder) {
