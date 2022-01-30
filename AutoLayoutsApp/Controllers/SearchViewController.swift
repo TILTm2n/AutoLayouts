@@ -160,6 +160,7 @@ class SearchViewController: UIViewController {
         //Регистрирует класс для использования при создании новых ячеек представления коллекции.
         collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: MyCollectionViewCell.identifier)
         collectionView.backgroundColor = UIColor(named: "mainBGLight")
+        collectionView.showsVerticalScrollIndicator = false
     }
     
     func setCollectionViewConstraints(){

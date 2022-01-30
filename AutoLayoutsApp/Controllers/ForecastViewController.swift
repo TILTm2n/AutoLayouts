@@ -10,17 +10,21 @@ import UIKit
 class ForecastViewController: UIViewController {
 
     let forecastLabel = UILabel()
+    let todayLabel = UILabel()
+    let dateLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(named: "mainBGLight")
-        view.addSubview(forecastLabel)
+        view.addSubview(todayLabel)
+        view.addSubview(dateLabel)
         
-        setForecastlabel()
-        setForecastlabelConstraints()
+        setForecastLabel()
+        setForecastLabelConstraints()
     }
     
-    func setForecastlabel(){
+    func setForecastLabel(){
+        view.addSubview(forecastLabel)
         forecastLabel.text = "Forecast Report"
         //forecastLabel.font = UIFont(name: "RobotoSlab-Medium", size: 30)
         forecastLabel.font = UIFont.boldSystemFont(ofSize: 30.0)
@@ -31,10 +35,25 @@ class ForecastViewController: UIViewController {
         
     }
     
-    func setForecastlabelConstraints(){
+    func setForecastLabelConstraints(){
         forecastLabel.translatesAutoresizingMaskIntoConstraints = false
         forecastLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 45.0).isActive = true
         forecastLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+    }
+    
+    func setTodayLabel(){
+        todayLabel.textColor = .white
+        todayLabel.font = UIFont(name: "RobotoSlab-Light", size: 15)
+    }
+    
+    func setTodayLabelConstrints(){
+        
+    }
+    
+    
+    
+    func setDateLabelConstrints(){
         
     }
     
