@@ -1,0 +1,79 @@
+//
+//  ForecastCollectionViewCell.swift
+//  AutoLayoutsApp
+//
+//  Created by Eugene on 30.01.2022.
+//
+
+import UIKit
+
+class ForecastCollectionViewCell: UICollectionViewCell {
+    static let identifier = "ForecastCell"
+    
+    let temperature: UILabel = {
+        var temperature = UILabel()
+        temperature.translatesAutoresizingMaskIntoConstraints = false
+        temperature.text = "28"
+        temperature.font = UIFont(name: "RobotoSlab-Medium", size: 17)
+        temperature.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+        return temperature
+    }()
+    
+    let time: UILabel = {
+        var time = UILabel()
+        time.translatesAutoresizingMaskIntoConstraints = false
+        time.text = "10:00am"
+        time.font = UIFont(name: "RobotoSlab-Medium", size: 12)
+        time.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+        return time
+    }()
+    
+    let icon: UIImageView = {
+        var icon = UIImageView()
+        icon.translatesAutoresizingMaskIntoConstraints = false
+        icon.contentMode = .scaleAspectFill
+        icon.image = UIImage(named: "cloudy")
+        return icon
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        contentView.backgroundColor = .white
+        contentView.layer.cornerRadius = 20
+        
+        contentView.addSubview(temperature)
+        contentView.addSubview(time)
+        contentView.addSubview(icon)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        iconConstraints()
+        temperatureConstraints()
+        timeConstraints()
+    }
+    
+    fileprivate func iconConstraints() {
+        icon.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        icon.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        icon.heightAnchor.constraint(equalToConstant: 70.0).isActive = true
+        icon.widthAnchor.constraint(equalToConstant: 70.0).isActive = true
+    }
+    
+    fileprivate func temperatureConstraints() {
+        temperature.heightAnchor.constraint(equalToConstant: 22.0).isActive = true
+        temperature.leftAnchor.constraint(equalTo: icon.rightAnchor, constant: 13.0).isActive = true
+        temperature.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 15.0).isActive = true
+        
+    }
+    
+    fileprivate func timeConstraints() {
+        time.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 27.0).isActive = true
+        time.leftAnchor.constraint(equalTo: icon.rightAnchor, constant: 13.0).isActive = true
+        time.heightAnchor.constraint(equalToConstant: 16.0).isActive = true
+    }
+}
