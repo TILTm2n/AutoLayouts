@@ -43,6 +43,7 @@ class ForecastViewController: UIViewController {
     }
     
     func setTodayLabel(){
+        
         todayLabel.textColor = .white
         todayLabel.font = UIFont(name: "RobotoSlab-Light", size: 15)
     }
@@ -51,7 +52,10 @@ class ForecastViewController: UIViewController {
         
     }
     
-    
+    func setDateLabel(){
+        dateLabel.textColor = .white
+        dateLabel.font = UIFont(name: "RobotoSlab-Light", size: 15)
+    }
     
     func setDateLabelConstrints(){
         
