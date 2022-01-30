@@ -167,15 +167,19 @@ class SearchViewController: UIViewController {
         collectionView?.topAnchor.constraint(equalTo: self.searchPanel.bottomAnchor, constant: 31.0).isActive = true
         collectionView?.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 45.0).isActive = true
         collectionView?.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: -45.0).isActive = true
-        collectionView?.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -18.0).isActive = true
+        collectionView?.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 0.0).isActive = true
     }
     
 }
 
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
-        print("you tapped me")
+        //collectionView.deselectItem(at: indexPath, animated: true)
+        collectionView.cellForItem(at: indexPath)?.contentView.backgroundColor = UIColor(named: "tabBarColorLight")
+    }
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        collectionView.cellForItem(at: indexPath)?.contentView.backgroundColor = .white
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -183,7 +187,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
