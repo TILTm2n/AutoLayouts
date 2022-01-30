@@ -21,6 +21,7 @@
 		A3A80158279F1F3000EA2E1E /* ForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A80157279F1F3000EA2E1E /* ForecastViewController.swift */; };
 		A3A8015A279F1F3F00EA2E1E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A80159279F1F3F00EA2E1E /* SettingsViewController.swift */; };
 		A3D5EB0927A70A3800FA2CFF /* ForecastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D5EB0827A70A3800FA2CFF /* ForecastCollectionViewCell.swift */; };
+		A3D5EB0B27A7260F00FA2CFF /* ForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D5EB0A27A7260F00FA2CFF /* ForecastTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		A3A80157279F1F3000EA2E1E /* ForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
 		A3A80159279F1F3F00EA2E1E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A3D5EB0827A70A3800FA2CFF /* ForecastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCollectionViewCell.swift; sourceTree = "<group>"; };
+		A3D5EB0A27A7260F00FA2CFF /* ForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				A3A80159279F1F3F00EA2E1E /* SettingsViewController.swift */,
 				A302BCFD27A1CF7400A5D7F6 /* MyCollectionViewCell.swift */,
 				A3D5EB0827A70A3800FA2CFF /* ForecastCollectionViewCell.swift */,
+				A3D5EB0A27A7260F00FA2CFF /* ForecastTableViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3D5EB0B27A7260F00FA2CFF /* ForecastTableViewCell.swift in Sources */,
 				A3837949279C89D900080A72 /* ViewController.swift in Sources */,
 				A3A80156279F1EEF00EA2E1E /* SearchViewController.swift in Sources */,
 				A3837945279C89D900080A72 /* AppDelegate.swift in Sources */,

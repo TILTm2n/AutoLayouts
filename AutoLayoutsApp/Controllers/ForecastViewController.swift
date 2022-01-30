@@ -13,6 +13,7 @@ class ForecastViewController: UIViewController {
     let todayLabel = UILabel()
     let dateLabel = UILabel()
     var collectionView: UICollectionView?
+    var tableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +56,7 @@ class ForecastViewController: UIViewController {
     
     func setTodayLabel(){
         todayLabel.text = "Today"
-        todayLabel.textColor = .black
+        todayLabel.textColor = .white
         todayLabel.font = UIFont(name: "RobotoSlab-Light", size: 15)
     }
     
@@ -69,7 +70,7 @@ class ForecastViewController: UIViewController {
     func setDateLabel(){
         dateLabel.text = "Jan 30,2022"
         dateLabel.textAlignment = .right
-        dateLabel.textColor = .black
+        dateLabel.textColor = .white
         dateLabel.font = UIFont(name: "RobotoSlab-Light", size: 15)
     }
     
@@ -101,19 +102,43 @@ class ForecastViewController: UIViewController {
         collectionView?.heightAnchor.constraint(equalToConstant: 85).isActive = true
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setTableView(){
+        tableView.register(ForecastTableViewCell.self, forCellReuseIdentifier: ForecastTableViewCell.identifier)
+        view.addSubview(tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
     }
-    */
+    
+    func setTableViewConstraints(){
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: collectionView!.bottomAnchor, constant: 23.0).isActive = true
+        tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 30.0).isActive = true
+        tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: 30.0).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+    }
 
 }
 
+// MARK: - Table View
+extension ForecastViewController: UITableViewDelegate, UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 7
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ForecastTableViewCell.identifier)
+        return cell!
+    }
+    
+    
+}
+
+
+// MARK: - Collection View
 extension ForecastViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -135,6 +160,10 @@ extension ForecastViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 20
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
     }
     
 }

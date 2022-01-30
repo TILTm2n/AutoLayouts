@@ -8,14 +8,15 @@
 import UIKit
 
 class ForecastCollectionViewCell: UICollectionViewCell {
-    static let identifier = "ForecastCell"
+    
+    static let identifier = "CollectionCell"
     
     let temperature: UILabel = {
         var temperature = UILabel()
         temperature.translatesAutoresizingMaskIntoConstraints = false
-        temperature.text = "28"
+        temperature.text = "28C"
         temperature.font = UIFont(name: "RobotoSlab-Medium", size: 17)
-        temperature.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+        temperature.textColor = .black
         return temperature
     }()
     
@@ -24,7 +25,7 @@ class ForecastCollectionViewCell: UICollectionViewCell {
         time.translatesAutoresizingMaskIntoConstraints = false
         time.text = "10:00am"
         time.font = UIFont(name: "RobotoSlab-Medium", size: 12)
-        time.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+        time.textColor = .black
         return time
     }()
     
@@ -52,6 +53,7 @@ class ForecastCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
         iconConstraints()
         temperatureConstraints()
         timeConstraints()
@@ -65,9 +67,8 @@ class ForecastCollectionViewCell: UICollectionViewCell {
     }
     
     fileprivate func temperatureConstraints() {
-        temperature.heightAnchor.constraint(equalToConstant: 22.0).isActive = true
+        temperature.topAnchor.constraint(equalTo: time.bottomAnchor, constant: 5.0).isActive = true
         temperature.leftAnchor.constraint(equalTo: icon.rightAnchor, constant: 13.0).isActive = true
-        temperature.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 15.0).isActive = true
         
     }
     
