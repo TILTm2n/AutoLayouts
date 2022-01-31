@@ -12,17 +12,38 @@ class LocationViewController: UIViewController {
     let locationLabel = UILabel()
     let dateLabel = UILabel()
     
+    let icon: UIImageView = {
+        var icon = UIImageView()
+        icon.contentMode = .scaleAspectFill
+        icon.image = UIImage(named: "cloudy")
+        return icon
+    }()
+    
+    let temperature: UILabel = {
+        var temperature = UILabel()
+        temperature.text = "28C"
+        temperature.font = UIFont(name: "RobotoSlab-Medium", size: 70)
+        temperature.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+        return temperature
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(named: "mainBGLight")
         view.addSubview(locationLabel)
         view.addSubview(dateLabel)
+        view.addSubview(icon)
+        view.addSubview(temperature)
         
         setLocationLabel()
         setLocationLabelConstraints()
         
         setDateLabel()
         setDateLabelConstraints()
+        
+        setIconConstraints()
+        
+        setTemperatureConstraints()
     }
 
     func setLocationLabel(){
@@ -56,8 +77,21 @@ class LocationViewController: UIViewController {
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 5).isActive = true
         dateLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
+    }
+    
+    func setIconConstraints(){
+        icon.translatesAutoresizingMaskIntoConstraints = false
+        icon.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 24.0).isActive = true
+        icon.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        icon.heightAnchor.constraint(equalToConstant: 155.0).isActive = true
+        icon.widthAnchor.constraint(equalToConstant: 155.0).isActive = true
         
     }
 
+    func setTemperatureConstraints(){
+        temperature.translatesAutoresizingMaskIntoConstraints = false
+        temperature.topAnchor.constraint(equalTo: icon.bottomAnchor).isActive = true
+        temperature.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        //temperature.heightAnchor.constraint(equalToConstant: 155.0).isActive = true
+    }
 }
