@@ -7,10 +7,17 @@
 
 import UIKit
 
+enum ValueType{
+    case Temperature
+    case Humidy
+    case Wind
+}
+
 class LocationViewController: UIViewController {
 
     let locationLabel = UILabel()
     let dateLabel = UILabel()
+    let valuesDock = UIView()
     var collectionView: UICollectionView?
     
     let icon: UIImageView = {
@@ -39,18 +46,13 @@ class LocationViewController: UIViewController {
         return todayLabel
     }()
     
-//    let valueBlock: UIView = {
-//        var vBlock = UIView()
-//
-//        return vBlock
-//    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(named: "mainBGLight")
         view.addSubview(icon)
         view.addSubview(temperature)
         view.addSubview(todayLabel)
+        view.addSubview(valuesDock)
         
         setLocationLabel()
         setLocationLabelConstraints()
@@ -65,6 +67,68 @@ class LocationViewController: UIViewController {
         setCollectionViewConstraints()
         
         setTodayLabelConstraints()
+        
+        setValuesDock()
+    }
+    
+    func createValueBlock(nameOfValue: String, valueOfValue: CGFloat, valueType: ValueType) -> UIView {
+        let vBlock = UIView()
+        vBlock.translatesAutoresizingMaskIntoConstraints = false
+        vBlock.heightAnchor.constraint(equalToConstant: 46.0).isActive = true
+        
+        let nameValue = UILabel()
+        nameValue.translatesAutoresizingMaskIntoConstraints = false
+        nameValue.text = nameOfValue
+        nameValue.font = UIFont.systemFont(ofSize: 15, weight: .light)
+        
+        let value = UILabel()
+        value.translatesAutoresizingMaskIntoConstraints = false
+        value.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        
+        if valueType == .Temperature{
+            value.text = "\(valueOfValue)C"
+        }else if valueType == .Humidy{
+            value.text = "\(valueOfValue)%"
+        }else if valueType == .Wind{
+            value.text = "\(valueOfValue)km/h"
+        }
+        
+        vBlock.addSubview(nameValue)
+        vBlock.addSubview(value)
+        
+        nameValue.topAnchor.constraint(equalTo: vBlock.topAnchor).isActive = true
+        nameValue.centerXAnchor.constraint(equalTo: vBlock.centerXAnchor).isActive = true
+        value.bottomAnchor.constraint(equalTo: vBlock.bottomAnchor).isActive = true
+        value.topAnchor.constraint(equalTo: nameValue.bottomAnchor).isActive = true
+        value.centerXAnchor.constraint(equalTo: vBlock.centerXAnchor).isActive = true
+        
+        return vBlock
+    }
+    
+    func setValuesDock(){
+        valuesDock.translatesAutoresizingMaskIntoConstraints = false
+        let temp = createValueBlock(nameOfValue: "Temp", valueOfValue: 26, valueType: .Temperature)
+        let humidy = createValueBlock(nameOfValue: "Humidy", valueOfValue: 26, valueType: .Humidy)
+        let wind = createValueBlock(nameOfValue: "Wind", valueOfValue: 26, valueType: .Wind)
+        
+        valuesDock.addSubview(temp)
+        valuesDock.addSubview(humidy)
+        valuesDock.addSubview(wind)
+        
+        temp.leftAnchor.constraint(equalTo: valuesDock.leftAnchor).isActive = true
+        temp.topAnchor.constraint(equalTo: valuesDock.topAnchor).isActive = true
+        
+        humidy.centerXAnchor.constraint(equalTo: valuesDock.centerXAnchor).isActive = true
+        humidy.topAnchor.constraint(equalTo: valuesDock.topAnchor).isActive = true
+        
+        wind.rightAnchor.constraint(equalTo: valuesDock.rightAnchor).isActive = true
+        wind.topAnchor.constraint(equalTo: valuesDock.topAnchor).isActive = true
+        
+        valuesDock.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 100.0).isActive = true
+        valuesDock.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 50.0).isActive = true
+        valuesDock.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -50.0).isActive = true
+        valuesDock.heightAnchor.constraint(equalToConstant: 46.0).isActive = true
+        
     }
 
     func setLocationLabel(){
@@ -115,7 +179,6 @@ class LocationViewController: UIViewController {
         temperature.translatesAutoresizingMaskIntoConstraints = false
         temperature.topAnchor.constraint(equalTo: icon.bottomAnchor).isActive = true
         temperature.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        //temperature.heightAnchor.constraint(equalToConstant: 155.0).isActive = true
     }
     
     func setCollectionView(){
