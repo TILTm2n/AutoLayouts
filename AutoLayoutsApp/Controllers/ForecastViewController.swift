@@ -33,6 +33,9 @@ class ForecastViewController: UIViewController {
         setCollectionView()
         setCollectionViewConstraints()
         
+        setTableView()
+        setTableViewConstraints()
+        
     }
     
     func setForecastLabel(){
@@ -107,13 +110,15 @@ class ForecastViewController: UIViewController {
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
+        tableView.backgroundColor = UIColor(named: "mainBGLight")
     }
     
     func setTableViewConstraints(){
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: collectionView!.bottomAnchor, constant: 23.0).isActive = true
         tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 30.0).isActive = true
-        tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: 30.0).isActive = true
+        tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -30.0).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
 
@@ -130,9 +135,15 @@ extension ForecastViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ForecastTableViewCell.identifier)
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: ForecastTableViewCell.identifier) as! ForecastTableViewCell
+        cell.backgroundColor = UIColor(named: "mainBGLight")
+        return cell
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 84.0
+    }
+    
     
     
 }
