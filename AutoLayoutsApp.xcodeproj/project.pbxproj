@@ -55,25 +55,162 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A37E09AC279DF2C2002FEAB9 /* Controllers */ = {
+		A361C14127A9B56200D45DD9 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A361C14927A9B69400D45DD9 /* General */,
+				A361C14227A9B5A900D45DD9 /* MyLocation */,
+				A361C14327A9B5B500D45DD9 /* Search */,
+				A361C14427A9B5C200D45DD9 /* Forecast */,
+				A361C14527A9B5CA00D45DD9 /* Settings */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A361C14227A9B5A900D45DD9 /* MyLocation */ = {
+			isa = PBXGroup;
+			children = (
+				A361C14827A9B64100D45DD9 /* View */,
+				A361C14727A9B5FF00D45DD9 /* Controller */,
+				A361C14627A9B5F200D45DD9 /* Model */,
+			);
+			path = MyLocation;
+			sourceTree = "<group>";
+		};
+		A361C14327A9B5B500D45DD9 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				A361C15227A9B82400D45DD9 /* View */,
+				A361C14C27A9B6FC00D45DD9 /* Controller */,
+				A361C14B27A9B6F500D45DD9 /* Model */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		A361C14427A9B5C200D45DD9 /* Forecast */ = {
+			isa = PBXGroup;
+			children = (
+				A361C14F27A9B76900D45DD9 /* View */,
+				A361C14E27A9B74900D45DD9 /* Controller */,
+				A361C14D27A9B74200D45DD9 /* Model */,
+			);
+			path = Forecast;
+			sourceTree = "<group>";
+		};
+		A361C14527A9B5CA00D45DD9 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A361C15027A9B7B000D45DD9 /* Controller */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		A361C14627A9B5F200D45DD9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A361C14727A9B5FF00D45DD9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A3A80153279F1EA100EA2E1E /* LocationViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A361C14827A9B64100D45DD9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A361C14927A9B69400D45DD9 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				A361C14A27A9B69E00D45DD9 /* View */,
+				A361C15127A9B7C800D45DD9 /* Controller */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		A361C14A27A9B69E00D45DD9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A3D5EB0827A70A3800FA2CFF /* ForecastCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A361C14B27A9B6F500D45DD9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A361C14C27A9B6FC00D45DD9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A3A80155279F1EEF00EA2E1E /* SearchViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A361C14D27A9B74200D45DD9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A361C14E27A9B74900D45DD9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A3A80157279F1F3000EA2E1E /* ForecastViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A361C14F27A9B76900D45DD9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A3D5EB0A27A7260F00FA2CFF /* ForecastTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A361C15027A9B7B000D45DD9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A3A80159279F1F3F00EA2E1E /* SettingsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A361C15127A9B7C800D45DD9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				A3837948279C89D900080A72 /* ViewController.swift */,
 				A37E09AD279DF315002FEAB9 /* CustomTabBarController.swift */,
-				A3A80153279F1EA100EA2E1E /* LocationViewController.swift */,
-				A3A80155279F1EEF00EA2E1E /* SearchViewController.swift */,
-				A3A80157279F1F3000EA2E1E /* ForecastViewController.swift */,
-				A3A80159279F1F3F00EA2E1E /* SettingsViewController.swift */,
-				A302BCFD27A1CF7400A5D7F6 /* MyCollectionViewCell.swift */,
-				A3D5EB0827A70A3800FA2CFF /* ForecastCollectionViewCell.swift */,
-				A3D5EB0A27A7260F00FA2CFF /* ForecastTableViewCell.swift */,
 			);
-			path = Controllers;
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A361C15227A9B82400D45DD9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A302BCFD27A1CF7400A5D7F6 /* MyCollectionViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		A3837938279C89D900080A72 = {
 			isa = PBXGroup;
 			children = (
+				A361C14127A9B56200D45DD9 /* App */,
 				A3837943279C89D900080A72 /* AutoLayoutsApp */,
 				A3837942279C89D900080A72 /* Products */,
 			);
@@ -90,7 +227,6 @@
 		A3837943279C89D900080A72 /* AutoLayoutsApp */ = {
 			isa = PBXGroup;
 			children = (
-				A37E09AC279DF2C2002FEAB9 /* Controllers */,
 				A3837944279C89D900080A72 /* AppDelegate.swift */,
 				A3837946279C89D900080A72 /* SceneDelegate.swift */,
 				A383794A279C89D900080A72 /* Main.storyboard */,
