@@ -80,10 +80,12 @@ class LocationViewController: UIViewController {
         nameValue.translatesAutoresizingMaskIntoConstraints = false
         nameValue.text = nameOfValue
         nameValue.font = UIFont.systemFont(ofSize: 15, weight: .light)
+        nameValue.textColor = .white
         
         let value = UILabel()
         value.translatesAutoresizingMaskIntoConstraints = false
         value.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        value.textColor = .white
         
         if valueType == .Temperature{
             value.text = "\(valueOfValue)C"
