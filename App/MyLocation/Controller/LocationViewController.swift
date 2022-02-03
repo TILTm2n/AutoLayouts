@@ -19,6 +19,7 @@ class LocationViewController: UIViewController {
     let dateLabel = UILabel()
     let valuesDock = UIView()
     var collectionView: UICollectionView?
+    var scrollView = UIScrollView()
     
     let icon: UIImageView = {
         var icon = UIImageView()
@@ -49,10 +50,20 @@ class LocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(named: "mainBGLight")
-        view.addSubview(icon)
-        view.addSubview(temperature)
-        view.addSubview(todayLabel)
-        view.addSubview(valuesDock)
+//        view.addSubview(icon)
+//        view.addSubview(temperature)
+//        view.addSubview(todayLabel)
+//        view.addSubview(valuesDock)
+        view.addSubview(scrollView)
+        scrollView.addSubview(locationLabel)
+        scrollView.addSubview(dateLabel)
+        scrollView.addSubview(icon)
+        scrollView.addSubview(temperature)
+        scrollView.addSubview(valuesDock)
+        scrollView.addSubview(todayLabel)
+        
+        setScrollView()
+        setScrollViewConstraints()
         
         setLocationLabel()
         setLocationLabelConstraints()
@@ -61,6 +72,7 @@ class LocationViewController: UIViewController {
         setDateLabelConstraints()
         
         setIconConstraints()
+        
         setTemperatureConstraints()
         
         setCollectionView()
@@ -71,9 +83,24 @@ class LocationViewController: UIViewController {
         setValuesDock()
     }
     
+    //MARK: - Scroll View
+    func setScrollView(){
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.contentSize = CGSize(width: view.frame.size.width, height: view.frame.size.height + 5)
+    }
+    
+    func setScrollViewConstraints(){
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        scrollView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
+        scrollView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+    }
+    
     //MARK: - Location Label
     func setLocationLabel(){
-        view.addSubview(locationLabel)
+//        view.addSubview(locationLabel)
         locationLabel.text = "Simpheropol Crimea"
         //locationLabel.font = UIFont(name: "RobotoSlab-Medium", size: 30)
         locationLabel.font = UIFont.boldSystemFont(ofSize: 30.0)
@@ -86,15 +113,23 @@ class LocationViewController: UIViewController {
     
     func setLocationLabelConstraints(){
         locationLabel.translatesAutoresizingMaskIntoConstraints = false
-        locationLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 45.0).isActive = true
-        //locationLabel.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
-        locationLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        locationLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 45.0).isActive = true
+        locationLabel.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
+        locationLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         
     }
     
+//    func setLocationLabelConstraints(){
+//        locationLabel.translatesAutoresizingMaskIntoConstraints = false
+//        locationLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 45.0).isActive = true
+//        //locationLabel.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
+//        locationLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//
+//    }
+    
     //MARK: - Date label
     func setDateLabel(){
-        view.addSubview(dateLabel)
+//        view.addSubview(dateLabel)
         dateLabel.text = "Jan 30,2022"
         dateLabel.textAlignment = .right
         dateLabel.textColor = .white
@@ -105,14 +140,17 @@ class LocationViewController: UIViewController {
     func setDateLabelConstraints(){
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 5).isActive = true
-        dateLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        //        dateLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        dateLabel.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
+        dateLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
     }
     
     //MARK: - Icon
     func setIconConstraints(){
         icon.translatesAutoresizingMaskIntoConstraints = false
         icon.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 24.0).isActive = true
-        icon.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        icon.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        icon.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         icon.heightAnchor.constraint(equalToConstant: 155.0).isActive = true
         icon.widthAnchor.constraint(equalToConstant: 155.0).isActive = true
         
@@ -123,6 +161,8 @@ class LocationViewController: UIViewController {
         temperature.translatesAutoresizingMaskIntoConstraints = false
         temperature.topAnchor.constraint(equalTo: icon.bottomAnchor).isActive = true
         temperature.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        temperature.heightAnchor.constraint(equalToConstant: 92).isActive = true
     }
     
     //MARK: - Values Block
@@ -182,10 +222,25 @@ class LocationViewController: UIViewController {
         wind.topAnchor.constraint(equalTo: valuesDock.topAnchor).isActive = true
         
         valuesDock.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 100.0).isActive = true
-        valuesDock.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 50.0).isActive = true
-        valuesDock.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -50.0).isActive = true
+//        valuesDock.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 50.0).isActive = true
+//        valuesDock.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -50.0).isActive = true
+        valuesDock.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        valuesDock.widthAnchor.constraint(equalToConstant: view.frame.size.width - 100).isActive = true
+        
         valuesDock.heightAnchor.constraint(equalToConstant: 46.0).isActive = true
         
+    }
+    
+    // MARK: - Today Label
+    func setTodayLabelConstraints(){
+        todayLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+//        todayLabel.bottomAnchor.constraint(equalTo: collectionView!.topAnchor, constant: -15.0).isActive = true
+//        todayLabel.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 24.0).isActive = true
+        todayLabel.topAnchor.constraint(equalTo: valuesDock.bottomAnchor, constant: 31.0).isActive = true
+        todayLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 24.0).isActive = true
+        
+        todayLabel.heightAnchor.constraint(equalToConstant: 26).isActive = true
     }
     
     // MARK: - Collection View
@@ -194,7 +249,9 @@ class LocationViewController: UIViewController {
         layout.scrollDirection = .horizontal
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         //guard let collectionView = collectionView else {return}
-        view.addSubview(collectionView!)
+//        view.addSubview(collectionView!)
+        scrollView.addSubview(collectionView!)
+        
         collectionView?.dataSource = self
         collectionView?.delegate = self
         collectionView?.register(ForecastCollectionViewCell.self, forCellWithReuseIdentifier: ForecastCollectionViewCell.identifier)
@@ -204,17 +261,17 @@ class LocationViewController: UIViewController {
     
     func setCollectionViewConstraints(){
         collectionView?.translatesAutoresizingMaskIntoConstraints = false
-        collectionView?.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -86).isActive = true
-        collectionView?.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
-        collectionView?.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
+        collectionView?.topAnchor.constraint(equalTo: todayLabel.bottomAnchor, constant: 24).isActive = true
+        collectionView?.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         collectionView?.heightAnchor.constraint(equalToConstant: 85).isActive = true
+        
+//        collectionView?.translatesAutoresizingMaskIntoConstraints = false
+//        collectionView?.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -86).isActive = true
+//        collectionView?.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
+//        collectionView?.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
+//        collectionView?.heightAnchor.constraint(equalToConstant: 85).isActive = true
     }
-    
-    func setTodayLabelConstraints(){
-        todayLabel.translatesAutoresizingMaskIntoConstraints = false
-        todayLabel.bottomAnchor.constraint(equalTo: collectionView!.topAnchor, constant: -15.0).isActive = true
-        todayLabel.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 24.0).isActive = true
-    }
+
 }
 
 extension LocationViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
