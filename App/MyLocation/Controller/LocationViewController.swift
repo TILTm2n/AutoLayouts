@@ -47,6 +47,12 @@ class LocationViewController: UIViewController {
         return todayLabel
     }()
     
+    lazy var ibgRefreshControl : UIRefreshControl = {
+        var refreshControl = UIRefreshControl()
+        refreshControl.tintColor = UIColor.red
+        return refreshControl
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(named: "mainBGLight")
@@ -61,6 +67,9 @@ class LocationViewController: UIViewController {
         scrollView.addSubview(temperature)
         scrollView.addSubview(valuesDock)
         scrollView.addSubview(todayLabel)
+        
+        extendedLayoutIncludesOpaqueBars = true
+        scrollView.refreshControl = ibgRefreshControl
         
         setScrollView()
         setScrollViewConstraints()
@@ -81,6 +90,8 @@ class LocationViewController: UIViewController {
         setTodayLabelConstraints()
         
         setValuesDock()
+        
+        
     }
     
     //MARK: - Scroll View
