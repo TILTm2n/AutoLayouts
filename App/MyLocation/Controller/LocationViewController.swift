@@ -71,6 +71,61 @@ class LocationViewController: UIViewController {
         setValuesDock()
     }
     
+    //MARK: - Location Label
+    func setLocationLabel(){
+        view.addSubview(locationLabel)
+        locationLabel.text = "Simpheropol Crimea"
+        //locationLabel.font = UIFont(name: "RobotoSlab-Medium", size: 30)
+        locationLabel.font = UIFont.boldSystemFont(ofSize: 30.0)
+        locationLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+        locationLabel.layer.shadowOffset = CGSize(width: 5, height: 5)
+        locationLabel.layer.shadowOpacity = 0.5
+        locationLabel.textAlignment = .center
+        
+    }
+    
+    func setLocationLabelConstraints(){
+        locationLabel.translatesAutoresizingMaskIntoConstraints = false
+        locationLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 45.0).isActive = true
+        //locationLabel.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
+        locationLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+    }
+    
+    //MARK: - Date label
+    func setDateLabel(){
+        view.addSubview(dateLabel)
+        dateLabel.text = "Jan 30,2022"
+        dateLabel.textAlignment = .right
+        dateLabel.textColor = .white
+        dateLabel.font = UIFont(name: "RobotoSlab-Light", size: 15)
+        
+    }
+    
+    func setDateLabelConstraints(){
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        dateLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 5).isActive = true
+        dateLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    }
+    
+    //MARK: - Icon
+    func setIconConstraints(){
+        icon.translatesAutoresizingMaskIntoConstraints = false
+        icon.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 24.0).isActive = true
+        icon.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        icon.heightAnchor.constraint(equalToConstant: 155.0).isActive = true
+        icon.widthAnchor.constraint(equalToConstant: 155.0).isActive = true
+        
+    }
+    
+    //MARK: - Temperature
+    func setTemperatureConstraints(){
+        temperature.translatesAutoresizingMaskIntoConstraints = false
+        temperature.topAnchor.constraint(equalTo: icon.bottomAnchor).isActive = true
+        temperature.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    }
+    
+    //MARK: - Values Block
     func createValueBlock(nameOfValue: String, valueOfValue: CGFloat, valueType: ValueType) -> UIView {
         let vBlock = UIView()
         vBlock.translatesAutoresizingMaskIntoConstraints = false
@@ -132,57 +187,8 @@ class LocationViewController: UIViewController {
         valuesDock.heightAnchor.constraint(equalToConstant: 46.0).isActive = true
         
     }
-
-    func setLocationLabel(){
-        view.addSubview(locationLabel)
-        locationLabel.text = "Simpheropol Crimea"
-        //locationLabel.font = UIFont(name: "RobotoSlab-Medium", size: 30)
-        locationLabel.font = UIFont.boldSystemFont(ofSize: 30.0)
-        locationLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-        locationLabel.layer.shadowOffset = CGSize(width: 5, height: 5)
-        locationLabel.layer.shadowOpacity = 0.5
-        locationLabel.textAlignment = .center
-        
-    }
     
-    func setLocationLabelConstraints(){
-        locationLabel.translatesAutoresizingMaskIntoConstraints = false
-        locationLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 45.0).isActive = true
-        //locationLabel.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
-        locationLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
-    }
-    
-    func setDateLabel(){
-        view.addSubview(dateLabel)
-        dateLabel.text = "Jan 30,2022"
-        dateLabel.textAlignment = .right
-        dateLabel.textColor = .white
-        dateLabel.font = UIFont(name: "RobotoSlab-Light", size: 15)
-        
-    }
-    
-    func setDateLabelConstraints(){
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
-        dateLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 5).isActive = true
-        dateLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-    }
-    
-    func setIconConstraints(){
-        icon.translatesAutoresizingMaskIntoConstraints = false
-        icon.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 24.0).isActive = true
-        icon.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        icon.heightAnchor.constraint(equalToConstant: 155.0).isActive = true
-        icon.widthAnchor.constraint(equalToConstant: 155.0).isActive = true
-        
-    }
-
-    func setTemperatureConstraints(){
-        temperature.translatesAutoresizingMaskIntoConstraints = false
-        temperature.topAnchor.constraint(equalTo: icon.bottomAnchor).isActive = true
-        temperature.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-    }
-    
+    // MARK: - Collection View
     func setCollectionView(){
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -211,7 +217,6 @@ class LocationViewController: UIViewController {
     }
 }
 
-// MARK: - Collection View
 extension LocationViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
