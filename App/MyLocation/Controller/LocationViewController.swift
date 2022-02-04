@@ -91,6 +91,17 @@ class LocationViewController: UIViewController {
         
         setValuesDock()
         
+        let baseUrl = URL(string: "")
+        let fullUrl = URL(string: "baseUrl", relativeTo: baseUrl)
+        
+        let sessionConfiguration = URLSessionConfiguration.default
+        let session = URLSession(configuration: sessionConfiguration)
+        
+        let request = URLRequest(url: fullUrl!)
+        let dataTask = session.dataTask(with: request) { (data, response, error) in
+            
+        }
+        dataTask.resume()
         
     }
     
