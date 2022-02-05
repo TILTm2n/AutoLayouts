@@ -19,8 +19,8 @@ protocol APIManager {
     var sessionConfiguration: URLSessionConfiguration { get }
     var session: URLSession { get }
     
-    func JSONTaskWith(request: URLRequest, completionHandler: ([String: AnyObject]?, HTTPURLResponse?, Error?) -> Void) -> URLSessionDataTask
-    func fetch<T>(request: URLRequest, parse: ([String: AnyObject]) -> T?, completionHandler: (APIResult<T>) -> Void)
+    func JSONTaskWith(request: URLRequest, completionHandler: @escaping ([String: AnyObject]?, HTTPURLResponse?, Error?) -> Void) -> URLSessionDataTask
+    func fetch<T>(request: URLRequest, parse: ([String: AnyObject]) -> T?, completionHandler: @escaping (APIResult<T>) -> Void)
     
     init(sessionConfiguration: URLSessionConfiguration)
 }
@@ -59,5 +59,24 @@ extension APIManager {
             }
         }
         return dataTask
+    }
+    
+    func fetch<T>(request: URLRequest, parse: @escaping ([String: AnyObject]) -> T?, completionHandler: @escaping (APIResult<T>) -> Void){
+        let dataTask = JSONTaskWith(request: request) { json, response, error in
+            guard let json = json else{
+                if let error = error {
+                    completionHandler(.Failure(error))
+                }
+                return
+            }
+            
+            if let value = parse(json) {
+                completionHandler(.Success(value))
+            } else {
+                let error = NSError(domain: NetworkingErrorDomain, code: 200, userInfo: nil)
+                completionHandler(.Failure(error))
+            }
+        }
+        dataTask.resume()
     }
 }

@@ -9,3 +9,4 @@ import Foundation
 
 public let NetworkingErrorDomain = "ru.WeatherApp.NetworkingError"
 public let MissingHTTPResponseError = 100
+public let UnexpectedResponseError = 200
