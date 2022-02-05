@@ -9,15 +9,17 @@ import Foundation
 
 struct LocationModel: Codable {
     
-    let userId: Int
-    let postId: Int
-    let title: String
-    let body: String
+    let location: String
+    let date: Date
+    let temperature: Double
+    let humidy: Double
+    let wind: Double
     
     enum CodingKeys: String, CodingKey {
-        case userId
-        case postId
-        case title
-        case body
+        case location
+        case date
+        case temperature
+        case humidy
+        case wind
     }
 }
