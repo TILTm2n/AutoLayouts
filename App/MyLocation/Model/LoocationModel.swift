@@ -6,20 +6,24 @@
 //
 
 import Foundation
+import UIKit
 
 struct LocationModel: Codable {
     
     let location: String
-    let date: Date
+    //let date: Date
     let temperature: Double
-    let humidy: Double
+    let appearentTemperature: Double
+    let humidity: Double
     let wind: Double
+    let icon: String
     
     enum CodingKeys: String, CodingKey {
-        case location
-        case date
-        case temperature
-        case humidy
-        case wind
+        case location = "timezone"
+        case temperature = "temp"
+        case appearentTemperature = "feels_like"
+        case humidity
+        case wind = "wind_speed"
+        case icon
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 
 enum ValueType{
     case Temperature
-    case Humidy
+    case Humidity
     case Wind
 }
 
@@ -194,7 +194,7 @@ class LocationViewController: UIViewController {
         
         if valueType == .Temperature{
             value.text = "\(valueOfValue)C"
-        }else if valueType == .Humidy{
+        }else if valueType == .Humidity{
             value.text = "\(valueOfValue)%"
         }else if valueType == .Wind{
             value.text = "\(valueOfValue)km/h"
@@ -215,7 +215,7 @@ class LocationViewController: UIViewController {
     func setValuesDock(){
         valuesDock.translatesAutoresizingMaskIntoConstraints = false
         let temp = createValueBlock(nameOfValue: "Temp", valueOfValue: 26, valueType: .Temperature)
-        let humidy = createValueBlock(nameOfValue: "Humidy", valueOfValue: 26, valueType: .Humidy)
+        let humidy = createValueBlock(nameOfValue: "Humidity", valueOfValue: 26, valueType: .Humidity)
         let wind = createValueBlock(nameOfValue: "Wind", valueOfValue: 26, valueType: .Wind)
         
         valuesDock.addSubview(temp)

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A302BCFE27A1CF7400A5D7F6 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302BCFD27A1CF7400A5D7F6 /* MyCollectionViewCell.swift */; };
+		A369771627AFC1AD00D42B93 /* APIWeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A369771527AFC1AD00D42B93 /* APIWeatherManager.swift */; };
+		A369771927AFDAD400D42B93 /* WeatherIconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A369771827AFDAD400D42B93 /* WeatherIconManager.swift */; };
 		A37E09AE279DF315002FEAB9 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E09AD279DF315002FEAB9 /* CustomTabBarController.swift */; };
 		A37ECDA927ADBF2900CB77D7 /* LoocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37ECDA827ADBF2900CB77D7 /* LoocationModel.swift */; };
 		A3837945279C89D900080A72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3837944279C89D900080A72 /* AppDelegate.swift */; };
@@ -29,6 +31,8 @@
 
 /* Begin PBXFileReference section */
 		A302BCFD27A1CF7400A5D7F6 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
+		A369771527AFC1AD00D42B93 /* APIWeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWeatherManager.swift; sourceTree = "<group>"; };
+		A369771827AFDAD400D42B93 /* WeatherIconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIconManager.swift; sourceTree = "<group>"; };
 		A37E09AD279DF315002FEAB9 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		A37ECDA827ADBF2900CB77D7 /* LoocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoocationModel.swift; sourceTree = "<group>"; };
 		A3837941279C89D900080A72 /* AutoLayoutsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoLayoutsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +141,7 @@
 		A361C14927A9B69400D45DD9 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				A369771727AFDA0B00D42B93 /* Utility */,
 				A361C14A27A9B69E00D45DD9 /* View */,
 				A361C15127A9B7C800D45DD9 /* Controller */,
 			);
@@ -202,8 +207,6 @@
 			children = (
 				A3837948279C89D900080A72 /* ViewController.swift */,
 				A37E09AD279DF315002FEAB9 /* CustomTabBarController.swift */,
-				A3BDC07527AEBF380060D005 /* APIManager.swift */,
-				A3BDC07827AF11C00060D005 /* ErrorManager.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -214,6 +217,17 @@
 				A302BCFD27A1CF7400A5D7F6 /* MyCollectionViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		A369771727AFDA0B00D42B93 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				A369771527AFC1AD00D42B93 /* APIWeatherManager.swift */,
+				A3BDC07827AF11C00060D005 /* ErrorManager.swift */,
+				A3BDC07527AEBF380060D005 /* APIManager.swift */,
+				A369771827AFDAD400D42B93 /* WeatherIconManager.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		A3837938279C89D900080A72 = {
@@ -325,7 +339,9 @@
 				A37ECDA927ADBF2900CB77D7 /* LoocationModel.swift in Sources */,
 				A37E09AE279DF315002FEAB9 /* CustomTabBarController.swift in Sources */,
 				A3BDC07627AEBF380060D005 /* APIManager.swift in Sources */,
+				A369771627AFC1AD00D42B93 /* APIWeatherManager.swift in Sources */,
 				A3D5EB0927A70A3800FA2CFF /* ForecastCollectionViewCell.swift in Sources */,
+				A369771927AFDAD400D42B93 /* WeatherIconManager.swift in Sources */,
 				A3A80154279F1EA100EA2E1E /* LocationViewController.swift in Sources */,
 				A3BDC07927AF11C00060D005 /* ErrorManager.swift in Sources */,
 				A3A80158279F1F3000EA2E1E /* ForecastViewController.swift in Sources */,
