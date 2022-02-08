@@ -8,7 +8,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
     let locationVC = LocationViewController()
     let searchVC = SearchViewController()
     let forecastVC = ForecastViewController()
@@ -35,7 +34,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setTabBarItems()
         
         

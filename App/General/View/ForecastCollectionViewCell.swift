@@ -34,6 +34,8 @@ class ForecastCollectionViewCell: UICollectionViewCell {
         icon.translatesAutoresizingMaskIntoConstraints = false
         icon.contentMode = .scaleAspectFill
         icon.image = UIImage(named: "cloudy")
+        
+        //icon.image = UIImage(named: "rain")
         return icon
     }()
     
@@ -64,6 +66,8 @@ class ForecastCollectionViewCell: UICollectionViewCell {
         icon.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         icon.heightAnchor.constraint(equalToConstant: 70.0).isActive = true
         icon.widthAnchor.constraint(equalToConstant: 70.0).isActive = true
+        
+        //icon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
     }
     
     fileprivate func temperatureConstraints() {

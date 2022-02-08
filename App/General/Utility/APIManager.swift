@@ -20,7 +20,6 @@ protocol FinalURLPoint {
     var request: URLRequest { get }
 }
 
-
 enum APIResult<T> {
     case Success(T)
     case Failure(Error)
@@ -30,7 +29,10 @@ protocol APIManager {
     var sessionConfiguration: URLSessionConfiguration { get }
     var session: URLSession { get }
     
+    //получает данные
     func JSONTaskWith(request: URLRequest, completionHandler: @escaping ([String: AnyObject]?, HTTPURLResponse?, Error?) -> Void) -> URLSessionDataTask
+    
+    //использует данные для обновленя интерфейса
     func fetch<T: JSONDecodable>(request: URLRequest, parse: ([String: AnyObject]) -> T?, completionHandler: @escaping (APIResult<T>) -> Void)
     
     //init(sessionConfiguration: URLSessionConfiguration)
@@ -42,17 +44,22 @@ extension APIManager {
         
         let dataTask = session.dataTask(with: request) { (data, response, error) in
             
+            //проверяем наличие HTTPURLResponse
             guard let HTTPResponse = response as? HTTPURLResponse else {
                 
                 let userInfo = [NSLocalizedDescriptionKey: NSLocalizedString("Missing HTTP Response", comment: "")]
                 let error = NSError(domain: NetworkingErrorDomain, code: MissingHTTPResponseError, userInfo: userInfo)
                 
+                //если нет, то возвращаем в completionHandler данные
                 completionHandler(nil, nil, error)
                 return
             }
             
+            //проверяем пустые ли данные
             if data == nil{
                 if let error = error{
+                    
+                    //если да и есть ошибка, то возвращаем в completionHandler данные
                     completionHandler(nil, HTTPResponse, error)
                 }
             }else{

@@ -25,6 +25,7 @@ class LocationViewController: UIViewController {
         var icon = UIImageView()
         icon.contentMode = .scaleAspectFill
         icon.image = UIImage(named: "cloudy")
+        //icon.image = UIImage(named: "rain")
         return icon
     }()
     
