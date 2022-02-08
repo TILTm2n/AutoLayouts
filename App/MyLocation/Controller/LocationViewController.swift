@@ -112,7 +112,7 @@ class LocationViewController: UIViewController {
     //MARK: - Location Label
     func setLocationLabel(){
 //        view.addSubview(locationLabel)
-        locationLabel.text = "Simpheropol Crimea"
+        //locationLabel.text = "Simpheropol Crimea"
         //locationLabel.font = UIFont(name: "RobotoSlab-Medium", size: 30)
         locationLabel.font = UIFont.boldSystemFont(ofSize: 30.0)
         locationLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
@@ -254,6 +254,12 @@ class LocationViewController: UIViewController {
         todayLabel.heightAnchor.constraint(equalToConstant: 26).isActive = true
     }
     
+    
+    func setValues(){
+        
+    }
+    
+    
     // MARK: - Collection View
     func setCollectionView(){
         let layout = UICollectionViewFlowLayout()
@@ -265,7 +271,7 @@ class LocationViewController: UIViewController {
         
         collectionView?.dataSource = self
         collectionView?.delegate = self
-        collectionView?.register(ForecastCollectionViewCell.self, forCellWithReuseIdentifier: ForecastCollectionViewCell.identifier)
+        collectionView?.register(LocationCollectionViewCell.self, forCellWithReuseIdentifier: LocationCollectionViewCell.identifier)
         collectionView?.backgroundColor = UIColor(named: "mainBGLight")
         collectionView?.showsHorizontalScrollIndicator = false
     }
@@ -295,7 +301,7 @@ extension LocationViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ForecastCollectionViewCell.identifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LocationCollectionViewCell.identifier, for: indexPath)
         
         return cell
     }

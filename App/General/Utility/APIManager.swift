@@ -66,6 +66,7 @@ extension APIManager {
                 switch HTTPResponse.statusCode{
                 case 200:
                     do{
+                        //сериализуем данные из json формата в объект Foundation
                         let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: AnyObject]
                         completionHandler(json, HTTPResponse, nil)
                     }catch let error as NSError{
@@ -80,6 +81,7 @@ extension APIManager {
     }
     
     func fetch<T>(request: URLRequest, parse: @escaping ([String: AnyObject]) -> T?, completionHandler: @escaping (APIResult<T>) -> Void){
+        
         let dataTask = JSONTaskWith(request: request) { json, response, error in
             guard let json = json else{
                 if let error = error {
@@ -95,6 +97,7 @@ extension APIManager {
                 completionHandler(.Failure(error))
             }
         }
+        
         dataTask.resume()
     }
 }

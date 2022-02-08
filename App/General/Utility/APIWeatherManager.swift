@@ -16,14 +16,13 @@ enum ForecastType: FinalURLPoint {
     case Current(apiKey: String, coordinates: Coordinates)
     
     var baseURL: URL {
-        return URL(string: "base url")!
+        return URL(string: "https://api.openweathermap.org/data/2.5/onecall?")!
     }
     
     var path: String {
         switch self {
         case let .Current(apiKey, coordinates):
-            return "кастомные куски пути, например: forecast/latitude/longtitude"
-            
+            return "lat=\(coordinates.latitude)&lon=\(coordinates.longtitude))&appid=\(apiKey)"
         }
     }
     
@@ -39,7 +38,7 @@ enum ForecastType: FinalURLPoint {
 //        return URLSession(configuration: self.sessionConfiguration)
 //    }()
 //
-//    let apiKey: String
+//    let apiKey: String = "5c3cbd6a194ea55903526944cac7ebe1"
 //
 //    init(sessionConfiguration: URLSessionConfiguration, apiKey: String){
 //        self.sessionConfiguration = sessionConfiguration
@@ -53,14 +52,8 @@ enum ForecastType: FinalURLPoint {
 //
 //    func fetchCurrentWeatherWith(coordinates: Coordinates, completionHandler: (APIResult<LocationModel>) -> Void) {
 //        let request = ForecastType.Current(apiKey: apiKey, coordinates: coordinates).request
-//        
-//        fetch(request: request) { (json) -> LocationModel in
-//            if let dictionary = json[""] as? [String: AnyObject]{
-//                
-//            }
-//        } completionHandler: { <#APIResult<T>#> in
-//            <#code#>
-//        }
+//
+//
 //
 //
 //    }
