@@ -32,7 +32,6 @@ class LocationViewController: UIViewController {
     let temperature: UILabel = {
         var temperature = UILabel()
         temperature.text = "28C"
-        //temperature.font = UIFont(name: "RobotoSlab-Medium", size: 70)
         temperature.font = UIFont.boldSystemFont(ofSize: 70.0)
         temperature.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
         return temperature
@@ -42,8 +41,6 @@ class LocationViewController: UIViewController {
         var todayLabel = UILabel()
         todayLabel.text = "Today"
         todayLabel.textColor = UIColor(red: 1, green: 0.996, blue: 0.996, alpha: 1)
-        //todayLabel.font = UIFont(name: "RobotoSlab-Light", size: 20)
-        //todayLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
         todayLabel.font = UIFont.systemFont(ofSize: 20, weight: .light)
         return todayLabel
     }()
@@ -57,10 +54,6 @@ class LocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(named: "mainBGLight")
-//        view.addSubview(icon)
-//        view.addSubview(temperature)
-//        view.addSubview(todayLabel)
-//        view.addSubview(valuesDock)
         view.addSubview(scrollView)
         scrollView.addSubview(locationLabel)
         scrollView.addSubview(dateLabel)
@@ -112,7 +105,7 @@ class LocationViewController: UIViewController {
     //MARK: - Location Label
     func setLocationLabel(){
 //        view.addSubview(locationLabel)
-        //locationLabel.text = "Simpheropol Crimea"
+        locationLabel.text = "Simpheropol Crimea"
         //locationLabel.font = UIFont(name: "RobotoSlab-Medium", size: 30)
         locationLabel.font = UIFont.boldSystemFont(ofSize: 30.0)
         locationLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
@@ -223,41 +216,32 @@ class LocationViewController: UIViewController {
         valuesDock.addSubview(humidy)
         valuesDock.addSubview(wind)
         
-        temp.leftAnchor.constraint(equalTo: valuesDock.leftAnchor).isActive = true
-        temp.topAnchor.constraint(equalTo: valuesDock.topAnchor).isActive = true
-        
-        humidy.centerXAnchor.constraint(equalTo: valuesDock.centerXAnchor).isActive = true
-        humidy.topAnchor.constraint(equalTo: valuesDock.topAnchor).isActive = true
-        
-        wind.rightAnchor.constraint(equalTo: valuesDock.rightAnchor).isActive = true
-        wind.topAnchor.constraint(equalTo: valuesDock.topAnchor).isActive = true
-        
-        valuesDock.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 100.0).isActive = true
-//        valuesDock.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 50.0).isActive = true
-//        valuesDock.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -50.0).isActive = true
-        valuesDock.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        valuesDock.widthAnchor.constraint(equalToConstant: view.frame.size.width - 100).isActive = true
-        
-        valuesDock.heightAnchor.constraint(equalToConstant: 46.0).isActive = true
-        
+        NSLayoutConstraint.activate([
+            temp.leftAnchor.constraint(equalTo: valuesDock.leftAnchor),
+            temp.topAnchor.constraint(equalTo: valuesDock.topAnchor),
+            humidy.centerXAnchor.constraint(equalTo: valuesDock.centerXAnchor),
+            humidy.topAnchor.constraint(equalTo: valuesDock.topAnchor),
+            wind.rightAnchor.constraint(equalTo: valuesDock.rightAnchor),
+            wind.topAnchor.constraint(equalTo: valuesDock.topAnchor),
+            valuesDock.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 100.0),
+            valuesDock.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            valuesDock.widthAnchor.constraint(equalToConstant: view.frame.size.width - 100),
+            valuesDock.heightAnchor.constraint(equalToConstant: 46.0)
+        ])
     }
     
     // MARK: - Today Label
     func setTodayLabelConstraints(){
         todayLabel.translatesAutoresizingMaskIntoConstraints = false
         
-//        todayLabel.bottomAnchor.constraint(equalTo: collectionView!.topAnchor, constant: -15.0).isActive = true
-//        todayLabel.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 24.0).isActive = true
-        todayLabel.topAnchor.constraint(equalTo: valuesDock.bottomAnchor, constant: 31.0).isActive = true
-        todayLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 24.0).isActive = true
-        
-        todayLabel.heightAnchor.constraint(equalToConstant: 26).isActive = true
-    }
-    
-    
-    func setValues(){
+        NSLayoutConstraint.activate([
+            todayLabel.topAnchor.constraint(equalTo: valuesDock.bottomAnchor, constant: 31.0),
+            todayLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 24.0),
+            todayLabel.heightAnchor.constraint(equalToConstant: 26)
+        ])
         
     }
+    
     
     
     // MARK: - Collection View
