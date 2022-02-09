@@ -96,10 +96,13 @@ class LocationViewController: UIViewController {
     
     func setScrollViewConstraints(){
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        scrollView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
-        scrollView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            scrollView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+        
     }
     
     //MARK: - Location Label
@@ -117,9 +120,12 @@ class LocationViewController: UIViewController {
     
     func setLocationLabelConstraints(){
         locationLabel.translatesAutoresizingMaskIntoConstraints = false
-        locationLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 45.0).isActive = true
-        locationLabel.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
-        locationLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        
+        NSLayoutConstraint.activate([
+            locationLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 45.0),
+            locationLabel.heightAnchor.constraint(equalToConstant: 40.0),
+            locationLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor)
+        ])
         
     }
     
@@ -133,7 +139,6 @@ class LocationViewController: UIViewController {
     
     //MARK: - Date label
     func setDateLabel(){
-//        view.addSubview(dateLabel)
         dateLabel.text = "Jan 30,2022"
         dateLabel.textAlignment = .right
         dateLabel.textColor = .white
@@ -143,30 +148,36 @@ class LocationViewController: UIViewController {
     
     func setDateLabelConstraints(){
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
-        dateLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 5).isActive = true
-        //        dateLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        dateLabel.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
-        dateLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        
+        NSLayoutConstraint.activate([
+            dateLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 5),
+            dateLabel.heightAnchor.constraint(equalToConstant: 20.0),
+            dateLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor)
+        ])
     }
     
     //MARK: - Icon
     func setIconConstraints(){
         icon.translatesAutoresizingMaskIntoConstraints = false
-        icon.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 24.0).isActive = true
-//        icon.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        icon.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        icon.heightAnchor.constraint(equalToConstant: 155.0).isActive = true
-        icon.widthAnchor.constraint(equalToConstant: 155.0).isActive = true
         
+        NSLayoutConstraint.activate([
+            icon.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 24.0),
+            icon.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            icon.heightAnchor.constraint(equalToConstant: 155.0),
+            icon.widthAnchor.constraint(equalToConstant: 155.0)
+        ])
     }
     
     //MARK: - Temperature
     func setTemperatureConstraints(){
         temperature.translatesAutoresizingMaskIntoConstraints = false
-        temperature.topAnchor.constraint(equalTo: icon.bottomAnchor).isActive = true
-        temperature.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-        temperature.heightAnchor.constraint(equalToConstant: 92).isActive = true
+        NSLayoutConstraint.activate([
+            temperature.topAnchor.constraint(equalTo: icon.bottomAnchor),
+            temperature.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            temperature.heightAnchor.constraint(equalToConstant: 92)
+        ])
+        
     }
     
     //MARK: - Values Block
@@ -197,11 +208,13 @@ class LocationViewController: UIViewController {
         vBlock.addSubview(nameValue)
         vBlock.addSubview(value)
         
-        nameValue.topAnchor.constraint(equalTo: vBlock.topAnchor).isActive = true
-        nameValue.centerXAnchor.constraint(equalTo: vBlock.centerXAnchor).isActive = true
-        value.bottomAnchor.constraint(equalTo: vBlock.bottomAnchor).isActive = true
-        value.topAnchor.constraint(equalTo: nameValue.bottomAnchor).isActive = true
-        value.centerXAnchor.constraint(equalTo: vBlock.centerXAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            nameValue.topAnchor.constraint(equalTo: vBlock.topAnchor),
+            nameValue.centerXAnchor.constraint(equalTo: vBlock.centerXAnchor),
+            value.bottomAnchor.constraint(equalTo: vBlock.bottomAnchor),
+            value.topAnchor.constraint(equalTo: nameValue.bottomAnchor),
+            value.centerXAnchor.constraint(equalTo: vBlock.centerXAnchor)
+        ])
         
         return vBlock
     }
@@ -262,9 +275,13 @@ class LocationViewController: UIViewController {
     
     func setCollectionViewConstraints(){
         collectionView?.translatesAutoresizingMaskIntoConstraints = false
-        collectionView?.topAnchor.constraint(equalTo: todayLabel.bottomAnchor, constant: 24).isActive = true
-        collectionView?.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-        collectionView?.heightAnchor.constraint(equalToConstant: 85).isActive = true
+        
+        NSLayoutConstraint.activate([
+            (collectionView?.topAnchor.constraint(equalTo: todayLabel.bottomAnchor, constant: 24))!,
+            (collectionView?.widthAnchor.constraint(equalTo: scrollView.widthAnchor))!,
+            (collectionView?.heightAnchor.constraint(equalToConstant: 85))!
+        ])
+        
         
 //        collectionView?.translatesAutoresizingMaskIntoConstraints = false
 //        collectionView?.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -86).isActive = true
