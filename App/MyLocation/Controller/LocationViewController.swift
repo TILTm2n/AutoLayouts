@@ -17,6 +17,18 @@ class LocationViewController: UIViewController {
     
     let valuesDock = UIView()
     
+    //MARK: - Scroll View
+//    lazy var scrollView: UIScrollView = {
+//        let scrollView = UIScrollView()
+//        scrollView.showsVerticalScrollIndicator = false
+//        scrollView.showsHorizontalScrollIndicator = false
+//        scrollView.translatesAutoresizingMaskIntoConstraints = false
+//        scrollView.contentSize = CGSize(width: view.frame.size.width, height: view.frame.size.height + 5)
+//        return scrollView
+//    }()
+    
+    lazy var scrollView = CustomScrollView(frame: self.view.frame).scrollView
+    
     // MARK: - Collection View
     var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -28,16 +40,6 @@ class LocationViewController: UIViewController {
         collectionView.register(LocationCollectionViewCell.self, forCellWithReuseIdentifier: LocationCollectionViewCell.identifier)
         
         return collectionView
-    }()
-    
-    //MARK: - Scroll View
-    lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.contentSize = CGSize(width: view.frame.size.width, height: view.frame.size.height + 5)
-        return scrollView
     }()
     
     //MARK: - Location Label
@@ -134,10 +136,16 @@ class LocationViewController: UIViewController {
     func setConstraints(){
         
         //MARK: - Scroll View Constraints
+//        NSLayoutConstraint.activate([
+//            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+//            scrollView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+//            scrollView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+//            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+//        ])
         NSLayoutConstraint.activate([
+            scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            scrollView.widthAnchor.constraint(equalTo: view.widthAnchor),
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-            scrollView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
         
