@@ -10,20 +10,27 @@ import UIKit
 
 class CustomScrollView: UIScrollView {
     
-    private let scrollView = UIScrollView()
+    var scrollView = UIScrollView()
     
-//    init(viewForSize: UIView) {
-//        super.init()
-//        
-//        scrollView.showsVerticalScrollIndicator = false
-//        scrollView.showsHorizontalScrollIndicator = false
-//        scrollView.translatesAutoresizingMaskIntoConstraints = false
-//        scrollView.contentSize = CGSize(width: viewForSize.frame.size.width, height: viewForSize.frame.size.height)
-//    }
-//    
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        scrollView.backgroundColor = .systemGreen
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        //scrollView.contentSize = CGSize(width: frame.size.width, height: frame.size.height + 5)
+    }
     
+    convenience init(frame: CGRect, neededView: UIView) {
+        self.init(frame: frame)
+        
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     
 }
