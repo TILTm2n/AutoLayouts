@@ -27,15 +27,7 @@ class LocationViewController: UIViewController {
     let dateLabel = DateLabel(text: "Jan 30,2022").label
     
     //MARK: - Icon
-    let icon: UIImageView = {
-        var icon = UIImageView()
-        
-        icon.image = UIImage(named: "cloudy")
-        
-        icon.contentMode = .scaleAspectFill
-        icon.translatesAutoresizingMaskIntoConstraints = false
-        return icon
-    }()
+    let icon = Icon(iconName: "cloudy").iconImage
     
     //MARK: - Temperature
     let temperature: UILabel = {
