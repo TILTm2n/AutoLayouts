@@ -17,29 +17,15 @@ class LocationViewController: UIViewController {
     
     let valuesDock = UIView()
     
-    //MARK: - Scroll View
-    lazy var scrollView = CustomScrollView(frame: self.view.frame).scrollView
     
-    //MARK: - Location Label
-    lazy var locationLabel = LocationLabel(frame: view.frame, text: "Simpheropol Crimea").label
-    
-    //MARK: - Date label
-    let dateLabel = DateLabel(text: "Jan 30,2022").label
-    
-    //MARK: - Icon
-    let icon = Icon(iconName: "cloudy").iconImage
-    
-    //MARK: - Temperature
-    let temperature = Temperature(temp: 28).label
-    
-    // MARK: - Today Label
     let todayLabel = Today().label
-    
-    // MARK: - Collection View
-    var collectionView = CustomCollection().collectionView
-    
-    // MARK: - Custom StackView
     let customStackView = CustomStackView()
+    let temperature = Temperature(temp: 28).label
+    let icon = Icon(iconName: "cloudy").iconImage
+    let dateLabel = DateLabel(text: "Jan 30,2022").label
+    var collectionView = CustomCollection().collectionView
+    lazy var scrollView = CustomScrollView(frame: self.view.frame).scrollView
+    lazy var locationLabel = LocationLabel(frame: view.frame, text: "Simpheropol Crimea").label
     
     lazy var ibgRefreshControl : UIRefreshControl = {
         var refreshControl = UIRefreshControl()
@@ -59,9 +45,7 @@ class LocationViewController: UIViewController {
         scrollView.addSubview(temperature)
         scrollView.addSubview(locationLabel)
         scrollView.addSubview(collectionView)
-        
         scrollView.addSubview(customStackView.stackView)
-        
         scrollView.refreshControl = ibgRefreshControl
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -69,8 +53,6 @@ class LocationViewController: UIViewController {
         customStackView.changeValues(temp: 12, humidity: 34, speed: 56)
         
         setConstraints()
-        
-        //setValuesDock()
     }
     
     func setConstraints(){
@@ -112,6 +94,14 @@ class LocationViewController: UIViewController {
             temperature.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
+        // MARK: - Custom StackView
+        NSLayoutConstraint.activate([
+            customStackView.stackView.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 100.0),
+            customStackView.stackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            customStackView.stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            customStackView.stackView.heightAnchor.constraint(equalToConstant: 46.0)
+        ])
+        
         // MARK: - Today Label Constraints
         NSLayoutConstraint.activate([
             todayLabel.heightAnchor.constraint(equalToConstant: 26),
@@ -126,20 +116,9 @@ class LocationViewController: UIViewController {
             collectionView.heightAnchor.constraint(equalToConstant: 85)
         ])
         
-        // MARK: - Custom StackView
-        NSLayoutConstraint.activate([
-//            customStackView.stackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-//            customStackView.stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-//            customStackView.stackView.topAnchor.constraint(equalTo: label.topAnchor, constant: 30),
-//            customStackView.stackView.heightAnchor.constraint(equalToConstant: 46),
-            
-            customStackView.stackView.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 100.0),
-            customStackView.stackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            customStackView.stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            customStackView.stackView.heightAnchor.constraint(equalToConstant: 46.0)
-
-        ])
+        
     }
+}
 
 extension LocationViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func numberOfSections(in collectionView: UICollectionView) -> Int {
