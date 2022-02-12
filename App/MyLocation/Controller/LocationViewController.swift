@@ -7,16 +7,7 @@
 
 import UIKit
 
-enum ValueType{
-    case Temperature
-    case Humidity
-    case Wind
-}
-
 class LocationViewController: UIViewController {
-    
-    let valuesDock = UIView()
-    
     
     let todayLabel = Today().label
     let customStackView = CustomStackView()
@@ -25,7 +16,7 @@ class LocationViewController: UIViewController {
     let dateLabel = DateLabel(text: "Jan 30,2022").label
     var collectionView = CustomCollection().collectionView
     lazy var scrollView = CustomScrollView(frame: self.view.frame).scrollView
-    lazy var locationLabel = LocationLabel(frame: view.frame, text: "Simpheropol Crimea").label
+    lazy var location = LocationLabel()
     
     lazy var ibgRefreshControl : UIRefreshControl = {
         var refreshControl = UIRefreshControl()
@@ -40,10 +31,9 @@ class LocationViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(icon)
         scrollView.addSubview(dateLabel)
-        scrollView.addSubview(valuesDock)
         scrollView.addSubview(todayLabel)
         scrollView.addSubview(temperature)
-        scrollView.addSubview(locationLabel)
+        scrollView.addSubview(location.locationLabel)
         scrollView.addSubview(collectionView)
         scrollView.addSubview(customStackView.stackView)
         scrollView.refreshControl = ibgRefreshControl
@@ -51,12 +41,12 @@ class LocationViewController: UIViewController {
         collectionView.dataSource = self
         
         customStackView.changeValues(temp: 12, humidity: 34, speed: 56)
+        location.changeLocation(location: "Simpheropol Crimea")
         
         setConstraints()
     }
     
     func setConstraints(){
-        
         //MARK: - Scroll View Constraints
         NSLayoutConstraint.activate([
             scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -67,16 +57,16 @@ class LocationViewController: UIViewController {
         
         //MARK: - Location Label Constraints
         NSLayoutConstraint.activate([
-            locationLabel.heightAnchor.constraint(equalToConstant: 40.0),
-            locationLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            locationLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 45.0)
+            location.locationLabel.heightAnchor.constraint(equalToConstant: 40.0),
+            location.locationLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            location.locationLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 45.0)
         ])
         
         //MARK: - Date label Constraints
         NSLayoutConstraint.activate([
             dateLabel.heightAnchor.constraint(equalToConstant: 20.0),
             dateLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            dateLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 5)
+            dateLabel.topAnchor.constraint(equalTo: location.locationLabel.bottomAnchor, constant: 5)
         ])
         
         //MARK: - Icon Constaints
@@ -96,10 +86,10 @@ class LocationViewController: UIViewController {
         
         // MARK: - Custom StackView
         NSLayoutConstraint.activate([
-            customStackView.stackView.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 100.0),
-            customStackView.stackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            customStackView.stackView.heightAnchor.constraint(equalToConstant: 46.0),
             customStackView.stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            customStackView.stackView.heightAnchor.constraint(equalToConstant: 46.0)
+            customStackView.stackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            customStackView.stackView.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 100.0)
         ])
         
         // MARK: - Today Label Constraints
@@ -111,9 +101,9 @@ class LocationViewController: UIViewController {
         
         // MARK: - Collection View Constraints
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: todayLabel.bottomAnchor, constant: 24),
+            collectionView.heightAnchor.constraint(equalToConstant: 85),
             collectionView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: 85)
+            collectionView.topAnchor.constraint(equalTo: todayLabel.bottomAnchor, constant: 24)
         ])
         
         

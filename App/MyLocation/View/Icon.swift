@@ -12,9 +12,8 @@ struct Icon {
     var iconImage = UIImageView()
     
     init(iconName: String){
-        iconImage.image = UIImage(named: iconName)
         iconImage.contentMode = .scaleAspectFill
+        iconImage.image = UIImage(named: iconName)
         iconImage.translatesAutoresizingMaskIntoConstraints = false
-        
     }
 }

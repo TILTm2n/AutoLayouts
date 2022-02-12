@@ -152,15 +152,15 @@
 		A361C14827A9B64100D45DD9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A3C6A7D227B2EFFD00E4EC36 /* LocationCollectionViewCell.swift */,
-				A398FC3E27B58E2B0014EE7B /* CustomScrollView.swift */,
-				A353306C27B706C8001F9253 /* LocationLabel.swift */,
-				A31B663C27B791B200A17529 /* DateLabel.swift */,
 				A31B663E27B7954600A17529 /* Icon.swift */,
-				A31B664027B797A700A17529 /* TemperatureLabel.swift */,
-				A31B664227B798A300A17529 /* TodayLabel.swift */,
 				A31B664427B79B5E00A17529 /* Collection.swift */,
+				A31B663C27B791B200A17529 /* DateLabel.swift */,
+				A31B664227B798A300A17529 /* TodayLabel.swift */,
+				A353306C27B706C8001F9253 /* LocationLabel.swift */,
+				A398FC3E27B58E2B0014EE7B /* CustomScrollView.swift */,
+				A31B664027B797A700A17529 /* TemperatureLabel.swift */,
 				A31B664627B7E91D00A17529 /* CustomStackView.swift */,
+				A3C6A7D227B2EFFD00E4EC36 /* LocationCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
