@@ -18,57 +18,13 @@ class LocationViewController: UIViewController {
     let valuesDock = UIView()
     
     //MARK: - Scroll View
-//    lazy var scrollView: UIScrollView = {
-//        let scrollView = UIScrollView()
-//        scrollView.showsVerticalScrollIndicator = false
-//        scrollView.showsHorizontalScrollIndicator = false
-//        scrollView.translatesAutoresizingMaskIntoConstraints = false
-//        scrollView.contentSize = CGSize(width: view.frame.size.width, height: view.frame.size.height + 5)
-//        return scrollView
-//    }()
-    
     lazy var scrollView = CustomScrollView(frame: self.view.frame).scrollView
     
-    // MARK: - Collection View
-    var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        layout.scrollDirection = .horizontal
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.backgroundColor = UIColor(named: "mainBGLight")
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(LocationCollectionViewCell.self, forCellWithReuseIdentifier: LocationCollectionViewCell.identifier)
-        
-        return collectionView
-    }()
-    
     //MARK: - Location Label
-    let locationLabel: UILabel = {
-        var locationLabel = UILabel()
-        
-        locationLabel.text = "Simpheropol Crimea"
-        
-        locationLabel.textAlignment = .center
-        locationLabel.layer.shadowOpacity = 0.5
-        locationLabel.font = UIFont.boldSystemFont(ofSize: 30.0)
-        locationLabel.layer.shadowOffset = CGSize(width: 5, height: 5)
-        locationLabel.translatesAutoresizingMaskIntoConstraints = false
-        locationLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-        return locationLabel
-    }()
+    lazy var locationLabel = LocationLabel(frame: view.frame, text: "Simpheropol Crimea").label
     
     //MARK: - Date label
-    let dateLabel: UILabel = {
-        var dateLabel = UILabel()
-        
-        dateLabel.text = "Jan 30,2022"
-        
-        dateLabel.textColor = .white
-        dateLabel.textAlignment = .right
-        dateLabel.font = UIFont(name: "RobotoSlab-Light", size: 15)
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
-        return dateLabel
-    }()
+    let dateLabel = DateLabel(text: "Jan 30,2022").label
     
     //MARK: - Icon
     let icon: UIImageView = {
@@ -105,6 +61,20 @@ class LocationViewController: UIViewController {
         return todayLabel
     }()
     
+    // MARK: - Collection View
+    var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        layout.scrollDirection = .horizontal
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.backgroundColor = UIColor(named: "mainBGLight")
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(LocationCollectionViewCell.self, forCellWithReuseIdentifier: LocationCollectionViewCell.identifier)
+        
+        return collectionView
+    }()
+    
+    
     lazy var ibgRefreshControl : UIRefreshControl = {
         var refreshControl = UIRefreshControl()
         refreshControl.tintColor = UIColor.red
@@ -136,12 +106,6 @@ class LocationViewController: UIViewController {
     func setConstraints(){
         
         //MARK: - Scroll View Constraints
-//        NSLayoutConstraint.activate([
-//            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-//            scrollView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-//            scrollView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
-//            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-//        ])
         NSLayoutConstraint.activate([
             scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             scrollView.widthAnchor.constraint(equalTo: view.widthAnchor),
