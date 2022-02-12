@@ -36,18 +36,10 @@ class LocationViewController: UIViewController {
     let todayLabel = Today().label
     
     // MARK: - Collection View
-    var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        layout.scrollDirection = .horizontal
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.backgroundColor = UIColor(named: "mainBGLight")
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(LocationCollectionViewCell.self, forCellWithReuseIdentifier: LocationCollectionViewCell.identifier)
-        
-        return collectionView
-    }()
+    var collectionView = CustomCollection().collectionView
     
+    // MARK: - Custom StackView
+    let customStackView = CustomStackView()
     
     lazy var ibgRefreshControl : UIRefreshControl = {
         var refreshControl = UIRefreshControl()
@@ -67,14 +59,18 @@ class LocationViewController: UIViewController {
         scrollView.addSubview(temperature)
         scrollView.addSubview(locationLabel)
         scrollView.addSubview(collectionView)
+        
+        scrollView.addSubview(customStackView.stackView)
+        
         scrollView.refreshControl = ibgRefreshControl
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        customStackView.changeValues(temp: 12, humidity: 34, speed: 56)
+        
         setConstraints()
         
-        setValuesDock()
-        
+        //setValuesDock()
     }
     
     func setConstraints(){
@@ -120,7 +116,7 @@ class LocationViewController: UIViewController {
         NSLayoutConstraint.activate([
             todayLabel.heightAnchor.constraint(equalToConstant: 26),
             todayLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 24.0),
-            todayLabel.topAnchor.constraint(equalTo: valuesDock.bottomAnchor, constant: 31.0)
+            todayLabel.topAnchor.constraint(equalTo: customStackView.stackView.bottomAnchor, constant: 31.0)
         ])
         
         // MARK: - Collection View Constraints
@@ -129,71 +125,21 @@ class LocationViewController: UIViewController {
             collectionView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             collectionView.heightAnchor.constraint(equalToConstant: 85)
         ])
-    }
-    
-    //MARK: - Values Block
-    func createValueBlock(nameOfValue: String, valueOfValue: CGFloat, valueType: ValueType) -> UIView {
-        let vBlock = UIView()
-        vBlock.translatesAutoresizingMaskIntoConstraints = false
-        vBlock.heightAnchor.constraint(equalToConstant: 46.0).isActive = true
         
-        let nameValue = UILabel()
-        nameValue.translatesAutoresizingMaskIntoConstraints = false
-        nameValue.text = nameOfValue
-        nameValue.font = UIFont.systemFont(ofSize: 15, weight: .light)
-        nameValue.textColor = .white
-        
-        let value = UILabel()
-        value.translatesAutoresizingMaskIntoConstraints = false
-        value.font = UIFont.systemFont(ofSize: 20, weight: .medium)
-        value.textColor = .white
-        
-        if valueType == .Temperature{
-            value.text = "\(valueOfValue)C"
-        }else if valueType == .Humidity{
-            value.text = "\(valueOfValue)%"
-        }else if valueType == .Wind{
-            value.text = "\(valueOfValue)km/h"
-        }
-        
-        vBlock.addSubview(nameValue)
-        vBlock.addSubview(value)
-        
+        // MARK: - Custom StackView
         NSLayoutConstraint.activate([
-            nameValue.topAnchor.constraint(equalTo: vBlock.topAnchor),
-            nameValue.centerXAnchor.constraint(equalTo: vBlock.centerXAnchor),
-            value.bottomAnchor.constraint(equalTo: vBlock.bottomAnchor),
-            value.topAnchor.constraint(equalTo: nameValue.bottomAnchor),
-            value.centerXAnchor.constraint(equalTo: vBlock.centerXAnchor)
-        ])
-        
-        return vBlock
-    }
-    
-    func setValuesDock(){
-        valuesDock.translatesAutoresizingMaskIntoConstraints = false
-        let temp = createValueBlock(nameOfValue: "Temp", valueOfValue: 26, valueType: .Temperature)
-        let humidy = createValueBlock(nameOfValue: "Humidity", valueOfValue: 26, valueType: .Humidity)
-        let wind = createValueBlock(nameOfValue: "Wind", valueOfValue: 26, valueType: .Wind)
-        
-        valuesDock.addSubview(temp)
-        valuesDock.addSubview(humidy)
-        valuesDock.addSubview(wind)
-        
-        NSLayoutConstraint.activate([
-            temp.leftAnchor.constraint(equalTo: valuesDock.leftAnchor),
-            temp.topAnchor.constraint(equalTo: valuesDock.topAnchor),
-            humidy.centerXAnchor.constraint(equalTo: valuesDock.centerXAnchor),
-            humidy.topAnchor.constraint(equalTo: valuesDock.topAnchor),
-            wind.rightAnchor.constraint(equalTo: valuesDock.rightAnchor),
-            wind.topAnchor.constraint(equalTo: valuesDock.topAnchor),
-            valuesDock.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 100.0),
-            valuesDock.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            valuesDock.widthAnchor.constraint(equalToConstant: view.frame.size.width - 100),
-            valuesDock.heightAnchor.constraint(equalToConstant: 46.0)
+//            customStackView.stackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+//            customStackView.stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+//            customStackView.stackView.topAnchor.constraint(equalTo: label.topAnchor, constant: 30),
+//            customStackView.stackView.heightAnchor.constraint(equalToConstant: 46),
+            
+            customStackView.stackView.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 100.0),
+            customStackView.stackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            customStackView.stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            customStackView.stackView.heightAnchor.constraint(equalToConstant: 46.0)
+
         ])
     }
-}
 
 extension LocationViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func numberOfSections(in collectionView: UICollectionView) -> Int {
