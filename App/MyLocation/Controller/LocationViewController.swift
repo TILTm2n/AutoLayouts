@@ -30,28 +30,10 @@ class LocationViewController: UIViewController {
     let icon = Icon(iconName: "cloudy").iconImage
     
     //MARK: - Temperature
-    let temperature: UILabel = {
-        var temperature = UILabel()
-        
-        temperature.text = "28C"
-        
-        temperature.font = UIFont.boldSystemFont(ofSize: 70.0)
-        temperature.translatesAutoresizingMaskIntoConstraints = false
-        temperature.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-        return temperature
-    }()
+    let temperature = Temperature(temp: 28).label
     
     // MARK: - Today Label
-    let todayLabel: UILabel = {
-        var todayLabel = UILabel()
-        
-        todayLabel.text = "Today"
-        
-        todayLabel.translatesAutoresizingMaskIntoConstraints = false
-        todayLabel.font = UIFont.systemFont(ofSize: 20, weight: .light)
-        todayLabel.textColor = UIColor(red: 1, green: 0.996, blue: 0.996, alpha: 1)
-        return todayLabel
-    }()
+    let todayLabel = Today().label
     
     // MARK: - Collection View
     var collectionView: UICollectionView = {
