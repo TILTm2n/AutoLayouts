@@ -21,7 +21,6 @@ class CustomStackView {
     private var windTitle: UILabel?
     private var windLabel: UILabel?
     
-    
     init() {
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
@@ -30,7 +29,6 @@ class CustomStackView {
         for i in 0...2 {
             stackView.addArrangedSubview(createBlock(index: i, value: 0))
         }
-        
     }
     
     required init(coder: NSCoder) {
@@ -43,7 +41,7 @@ class CustomStackView {
         windLabel?.text = "\(speed)km/h"
     }
     
-    func createBlock(index: Int, value: Int) -> UIStackView {
+    func createBlock(index: Int, value: Double) -> UIStackView {
 
         let valueBlock = UIStackView()
         valueBlock.translatesAutoresizingMaskIntoConstraints = false
@@ -73,26 +71,22 @@ class CustomStackView {
             tempTitle = localTitle
             tempLabel = localLabel
             
-            tempTitle?.text = "Temp"
-            tempLabel?.text = "\(value)C"
+            tempTitle?.text = "Feels like"
+            tempLabel?.text = "\(Int(value))C"
         } else if index == 1 {
             humidityTitle = localTitle
             humidityLabel = localLabel
             
             humidityTitle?.text = "Humidity"
-            humidityLabel?.text = "\(value)%"
+            humidityLabel?.text = "\(Int(value))%"
         } else if index == 2 {
             windTitle = localTitle
             windLabel = localLabel
             
             windTitle?.text = "Wind"
-            windLabel?.text = "\(value)km/h"
+            windLabel?.text = "\(Int(value))km/h"
         }
         
         return valueBlock
-        
     }
-    
-    
-    
 }

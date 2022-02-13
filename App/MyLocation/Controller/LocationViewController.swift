@@ -9,14 +9,14 @@ import UIKit
 
 class LocationViewController: UIViewController {
     
-    let todayLabel = Today().label
+    let icon            = Icon(iconName: "rain")
+    let dateLabel       = DateLabel(text: "Jan 30,2022")
+    let todayLabel      = Today().label
+    let temperature     = Temperature(temp: 28)
+    var collectionView  = CustomCollection().collectionView
     let customStackView = CustomStackView()
-    let temperature = Temperature(temp: 28).label
-    let icon = Icon(iconName: "cloudy").iconImage
-    let dateLabel = DateLabel(text: "Jan 30,2022").label
-    var collectionView = CustomCollection().collectionView
     lazy var scrollView = CustomScrollView(frame: self.view.frame).scrollView
-    lazy var location = LocationLabel()
+    lazy var location   = LocationLabel()
     
     lazy var ibgRefreshControl : UIRefreshControl = {
         var refreshControl = UIRefreshControl()
@@ -29,10 +29,10 @@ class LocationViewController: UIViewController {
         extendedLayoutIncludesOpaqueBars = true
         self.view.backgroundColor = UIColor(named: "mainBGLight")
         view.addSubview(scrollView)
-        scrollView.addSubview(icon)
-        scrollView.addSubview(dateLabel)
+        scrollView.addSubview(icon.iconImage)
+        scrollView.addSubview(dateLabel.label)
         scrollView.addSubview(todayLabel)
-        scrollView.addSubview(temperature)
+        scrollView.addSubview(temperature.label)
         scrollView.addSubview(location.locationLabel)
         scrollView.addSubview(collectionView)
         scrollView.addSubview(customStackView.stackView)
@@ -40,8 +40,11 @@ class LocationViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        customStackView.changeValues(temp: 12, humidity: 34, speed: 56)
+        icon.setImage(image: "cloudy")
+        dateLabel.setDate("Feb 13, 2022")
+        temperature.setTemperature(temperature: 35)
         location.changeLocation(location: "Simpheropol Crimea")
+        customStackView.changeValues(temp: 12, humidity: 34, speed: 56)
         
         setConstraints()
     }
@@ -64,24 +67,24 @@ class LocationViewController: UIViewController {
         
         //MARK: - Date label Constraints
         NSLayoutConstraint.activate([
-            dateLabel.heightAnchor.constraint(equalToConstant: 20.0),
-            dateLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            dateLabel.topAnchor.constraint(equalTo: location.locationLabel.bottomAnchor, constant: 5)
+            dateLabel.label.heightAnchor.constraint(equalToConstant: 20.0),
+            dateLabel.label.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            dateLabel.label.topAnchor.constraint(equalTo: location.locationLabel.bottomAnchor, constant: 5)
         ])
         
         //MARK: - Icon Constaints
         NSLayoutConstraint.activate([
-            icon.widthAnchor.constraint(equalToConstant: 155.0),
-            icon.heightAnchor.constraint(equalToConstant: 155.0),
-            icon.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            icon.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 24.0)
+            icon.iconImage.widthAnchor.constraint(equalToConstant: 155.0),
+            icon.iconImage.heightAnchor.constraint(equalToConstant: 155.0),
+            icon.iconImage.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            icon.iconImage.topAnchor.constraint(equalTo: dateLabel.label.bottomAnchor, constant: 24.0)
         ])
         
         //MARK: - Temperature Constraints
         NSLayoutConstraint.activate([
-            temperature.heightAnchor.constraint(equalToConstant: 92),
-            temperature.topAnchor.constraint(equalTo: icon.bottomAnchor),
-            temperature.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            temperature.label.heightAnchor.constraint(equalToConstant: 92),
+            temperature.label.topAnchor.constraint(equalTo: icon.iconImage.bottomAnchor),
+            temperature.label.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
         // MARK: - Custom StackView
@@ -89,7 +92,7 @@ class LocationViewController: UIViewController {
             customStackView.stackView.heightAnchor.constraint(equalToConstant: 46.0),
             customStackView.stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             customStackView.stackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            customStackView.stackView.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 100.0)
+            customStackView.stackView.topAnchor.constraint(equalTo: icon.iconImage.bottomAnchor, constant: 100.0)
         ])
         
         // MARK: - Today Label Constraints

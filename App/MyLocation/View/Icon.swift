@@ -16,4 +16,8 @@ struct Icon {
         iconImage.image = UIImage(named: iconName)
         iconImage.translatesAutoresizingMaskIntoConstraints = false
     }
+    
+    func setImage(image withName: String) {
+        iconImage.image = UIImage(named: withName)
+    }
 }

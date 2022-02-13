@@ -2,26 +2,13 @@
 //  APIManager.swift
 //  AutoLayoutsApp
 //
-//  Created by Eugene on 05.02.2022.
+//  Created by Eugene on 13.02.2022.
 //
 
 import Foundation
 
-//typealias JSONTask = URLSessionDataTask
-//typealias JSONCompletionHandler = ([String: AnyObject]?, HTTPURLResponse?, Error?) -> Void
-
-protocol JSONDecodable {
-    init?(JSON: [String: AnyObject])
-}
-
-protocol FinalURLPoint {
-    var baseURL: URL { get }
-    var path: String { get }
-    var request: URLRequest { get }
-}
-
-enum APIResult<T> {
-    case Success(T)
+enum APIResult<LocationModel> {
+    case Success(LocationModel)
     case Failure(Error)
 }
 
@@ -30,17 +17,18 @@ protocol APIManager {
     var session: URLSession { get }
     
     //получает данные
-    func JSONTaskWith(request: URLRequest, completionHandler: @escaping ([String: AnyObject]?, HTTPURLResponse?, Error?) -> Void) -> URLSessionDataTask
+    func JSONTaskWith(request: URLRequest, completionHandler: @escaping (LocationModel?, HTTPURLResponse?, Error?) -> Void) -> URLSessionDataTask
     
     //использует данные для обновленя интерфейса
-    func fetch<T: JSONDecodable>(request: URLRequest, parse: ([String: AnyObject]) -> T?, completionHandler: @escaping (APIResult<T>) -> Void)
+    func fetch<LocationModel>(request: URLRequest, completionHandler: @escaping (APIResult<LocationModel>) -> Void)
     
-    //init(sessionConfiguration: URLSessionConfiguration)
+    
 }
 
-//дефолтная реализация
 extension APIManager {
-    func JSONTaskWith(request: URLRequest, completionHandler: @escaping ([String: AnyObject]?, HTTPURLResponse?, Error?) -> Void) -> URLSessionDataTask{
+    func JSONTaskWith(request: URLRequest, completionHandler: @escaping (LocationModel?, HTTPURLResponse?, Error?) -> Void) -> URLSessionDataTask{
+        
+        let decoder = JSONDecoder()
         
         let dataTask = session.dataTask(with: request) { (data, response, error) in
             
@@ -67,8 +55,8 @@ extension APIManager {
                 case 200:
                     do{
                         //сериализуем данные из json формата в объект Foundation
-                        let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: AnyObject]
-                        completionHandler(json, HTTPResponse, nil)
+                        let weatherData = try decoder.decode(LocationModel.self, from: data!)
+                        completionHandler(weatherData, HTTPResponse, nil)
                     }catch let error as NSError{
                         completionHandler(nil, HTTPResponse, error)
                     }
@@ -80,21 +68,18 @@ extension APIManager {
         return dataTask
     }
     
-    func fetch<T>(request: URLRequest, parse: @escaping ([String: AnyObject]) -> T?, completionHandler: @escaping (APIResult<T>) -> Void){
+    func fetch<LocationModel>(request: URLRequest, completionHandler: @escaping (APIResult<LocationModel>) -> Void){
         
-        let dataTask = JSONTaskWith(request: request) { json, response, error in
-            guard let json = json else{
+        let dataTask = JSONTaskWith(request: request) { weatherData, response, error in
+            guard let weatherData = weatherData else{
                 if let error = error {
                     completionHandler(.Failure(error))
                 }
                 return
             }
             
-            if let value = parse(json) {
-                completionHandler(.Success(value))
-            } else {
-                let error = NSError(domain: NetworkingErrorDomain, code: 200, userInfo: nil)
-                completionHandler(.Failure(error))
+            if let weatherData = weatherData as? LocationModel {
+                completionHandler(.Success(weatherData))
             }
         }
         
